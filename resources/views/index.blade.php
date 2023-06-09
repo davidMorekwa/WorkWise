@@ -44,7 +44,10 @@
     <!-- SIDENAV -->
     <div class="sidenav" id="sidenav">
         <!-- LOGO -->
-        <h1 class="mylogo">WorkWise</h1>
+        <div class="">
+            <h1 class="mylogo">WorkWise</h1>
+        </div>
+
 
         <!-- SIDE MENU -->
         <div class="side-menu">
@@ -67,18 +70,14 @@
         <!-- AUTHENTICATION -->
         <div class="authentication">
             @if (Route::has('login'))
-                <div class="">
+                <div class="authentication-input">
                     @auth
-                        <a href="{{ url('/home') }}"
-                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
+                        <a href="{{ url('/home') }}" class="">Home</a>
                     @else
-                        <a href="{{ route('login') }}"
-                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-                            in</a>
+                        <a href="{{ route('login') }}" class="">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}"
-                                class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                            <a href="{{ route('register') }}" class="">Register</a>
                         @endif @endauth
                     </div>
                 @endif
@@ -165,9 +164,6 @@
                         <div class="card-salary">
                             <p><b>$500</b> / Year</p>
                         </div>
-                        <div class="card-more">
-                            <a href="#">Read more...</a>
-                        </div>
                     </div>
                 </div>
 
@@ -202,9 +198,7 @@
                         <div class="card-salary">
                             <p><b>$500</b> / Year</p>
                         </div>
-                        <div class="card-more">
-                            <a href="#">Read more...</a>
-                        </div>
+
                     </div>
                 </div>
 
@@ -239,9 +233,7 @@
                         <div class="card-salary">
                             <p><b>$500</b> / Year</p>
                         </div>
-                        <div class="card-more">
-                            <a href="#">Read more...</a>
-                        </div>
+
                     </div>
                 </div>
 
@@ -276,9 +268,7 @@
                         <div class="card-salary">
                             <p><b>$500</b> / Year</p>
                         </div>
-                        <div class="card-more">
-                            <a href="#">Read more...</a>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -305,7 +295,7 @@
                         velit explicabo ea tenetur temporibus sed doloribus ducimus rerum
                         aliquam praesentium.
                     </p>
-                    <a href="#">Read more</a>
+
                 </div>
                 <hr class="divider" />
 

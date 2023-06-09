@@ -39,11 +39,11 @@ body {
 
 /* *************  SIDENAV  ************* */
 .sidenav {
-    width: 20%;
+    width: 15%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     padding: 2rem;
     background-color: var(--primarycolor);
@@ -55,7 +55,8 @@ body {
 .mylogo {
     letter-spacing: 2;
     font-size: 2.3rem;
-    text-transform: uppercase;font-weight: 800;
+    text-transform: uppercase;
+    font-weight: 800;
 }
 
 .side-menu {
@@ -69,11 +70,13 @@ body {
     align-items: center;
     color: var(--whiteblue);
     padding: 10px;
+    font-size: 20px;
+    text-transform: capitalize;
 }
 
 .side-menu ion-icon {
-    margin-right: 0.5rem;
-    font-size: 20px;
+    margin-right: 0.8rem;
+    font-size: 25px;
     color: var(--darkgrey-color);
     font-weight: 700;
 }
@@ -84,10 +87,6 @@ body {
     background-color: var(--secondarycolor);
 }
 
-.authentication {
-    display: flex;
-    flex-direction: column;
-}
 
 .authentication a {
     padding: 5px;
@@ -96,7 +95,15 @@ body {
     border: 2px solid var(--secondarycolor);
     background-color: var(--secondarycolor);
     color: var(--whiteblue);
-    text-transform: uppercase;
+    text-transform: capitalize;
+    margin: 10px;
+}
+
+.authentication-input {
+    display: flex;
+    font-size: 20px;
+    text-align: center;
+    padding: 5px;
 }
 
 .authentication a:hover {
@@ -134,14 +141,14 @@ body {
 
 /* *************  MAIN  ************* */
 .main {
-    width: calc(100% - 20% - 25%);
+    width: calc(100% - 15% - 25%);
     min-height: 100%;
     min-width: 300px;
     height: max-content;
     display: flex;
     flex-direction: column;
     padding: 2rem 2%;
-    margin-left: 20%;
+    margin-left: 15%;
     background-color: var(--soft-purple);
     z-index: 1;
 }
@@ -248,14 +255,14 @@ body {
 }
 
 .sort-list select {
-    height: 1.5rem;
+    height: 2rem;
     border-radius: 20px;
     border: none;
     margin-top: 0 .5rem;
     padding: 5px;
     background-color: var(--whiteblue);
-
 }
+
 
 /* CARDS */
 .wrapper {
@@ -441,51 +448,66 @@ body {
     z-index: 100;
 }
 
-@media screen and (max-width: 1092px) {
-    .menu-bar {
-        display: block;
+@media screen and (max-width: 1605px) {
+    .mylogo {
+        font-size: 30px;
     }
 
+    .side-menu a {
+        font-size: 18px;
+    }
+
+    .authentication-input {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    .mylogo {
+        font-size: 25px;
+    }
+
+    .side-menu a {
+        font-size: 18px;
+    }
+
+    .authentication-input {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 1062px) {
+    .detail {
+        display: none;
+    }
+
+    .sidenav {
+        width: 20%;
+    }
+
+    .main {
+        width: calc(100% - 20%);
+        margin-left: 20%;
+    }
+}
+
+@media screen and (max-width: 810px) {
     .sidenav {
         display: none;
     }
 
     .main {
-        width: calc(100% - 40%);
-        margin-left: 0;
-    }
-
-    .detail {
-        width: 40%;
-    }
-}
-
-@media screen and (max-width: 700px) {
-    .main {
         width: 100%;
+        margin-left: 0%;
     }
 
-    .detail {
-        display: none;
-    }
-
-    .detail .active {
+    .menu-bar {
         display: block;
-        width: 100%;
-        z-index: 100;
     }
 
-    .detail .active .close-detail {
-        display: block;
-        cursor: pointer;
+    .filter {
+        font-size: 13px;
     }
-}
 
-@media screen and (max-width: 480px) {
-
-    .card-location,
-    .card-sub,
-    .card-tag {
-        display: none;
-    }
 }
