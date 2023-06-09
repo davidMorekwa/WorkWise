@@ -44,26 +44,23 @@
     <!-- SIDENAV -->
     <div class="sidenav" id="sidenav">
         <!-- LOGO -->
-        <div class="">
-            <h1 class="mylogo">WorkWise</h1>
-        </div>
-
+        <h1 class="mylogo menu-link">WorkWise</h1>
 
         <!-- SIDE MENU -->
         <div class="side-menu">
-            <a href="#">
+            <a href="#" class="menu-link">
                 <ion-icon name="home-outline"></ion-icon> Home
             </a>
-            <a href="#">
+            <a href="#" class="menu-link">
                 <ion-icon name="newspaper-outline"></ion-icon> Find jobs
             </a>
-            <a href="#">
+            <a href="#" class="menu-link">
                 <ion-icon name="bookmarks-outline"></ion-icon> Bookmarks
             </a>
-            <a href="#">
+            <a href="#" class="menu-link">
                 <ion-icon name="mail-unread-outline"></ion-icon> Message
             </a>
-            <a href="#">
+            <a href="#" class="menu-link">
                 <ion-icon name="settings-outline"></ion-icon> Settings
             </a>
         </div>
@@ -93,10 +90,10 @@
         </div>
 
         <!-- MAIN -->
-        <div class="main">
+        <div class="main" id="main">
             <!-- MAIN HEADER -->
             <div class="main-header">
-                <ion-icon class="menu-bar" name="menu-outline"></ion-icon>
+                <ion-icon class="menu-bar" id="menu-bar" name="menu-outline"></ion-icon>
                 <div class="search">
                     <input type="text" placeholder="Search for a Job..." />
                     <button class="btn-search" title="search">
@@ -276,7 +273,7 @@
 
         <!-- CARD DETAILS -->
         <div class="detail" id="detail">
-            <ion-icon class="close-detail" name="close-circle-outline"></ion-icon>
+            <ion-icon class="close-detail" id="close-detail" name="close-circle-outline"></ion-icon>
 
             <!-- DETAIL HEADER -->
             <div class="detail-header">
@@ -320,11 +317,9 @@
         </div>
 
         <!-- MAIN JS -->
-        <script src="main.js"></script>
+        <script src="index.js"></script>
         <!-- ICONS JS -->
-        <script
-  type="module"
-  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+        <script type="module"src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
 ></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
