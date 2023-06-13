@@ -92,11 +92,10 @@ body {
 
 
 .authentication a {
-    padding: 5px;
+    padding: 9px;
     margin-bottom: 10px;
     border-radius: 10px;
-    border: 2px solid var(--secondarycolor);
-    background-color: var(--secondarycolor);
+    background-color: var(--darkgrey-color);
     color: var(--whiteblue);
     text-transform: capitalize;
     margin: 10px;
@@ -104,13 +103,14 @@ body {
 
 .authentication-input {
     display: flex;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
-    padding: 5px;
+    padding: 9px;
 }
 
 .authentication a:hover {
-    background: transparent;
+    background-color: var(--secondarycolor);
+    color: var(--whiteblue);
 }
 
 .profile {
@@ -154,6 +154,7 @@ body {
     margin-left: 15%;
     background-color: var(--soft-purple);
     z-index: 1;
+    align-items: center;
 }
 
 .main-header {
@@ -176,7 +177,7 @@ body {
 }
 
 .search {
-    width: 100%;
+    width: 500px;
     display: flex;
     justify-content: space-between;
     border: none;
@@ -200,7 +201,7 @@ body {
     right: 0;
     top: 0;
     height: 100%;
-    padding: 0 5%;
+    padding: 0 3%;
     border: none;
     background-color: var(--primarycolor);
     color: var(--whiteblue);
