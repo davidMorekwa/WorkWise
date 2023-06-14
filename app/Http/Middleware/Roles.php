@@ -14,21 +14,16 @@ class Roles
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, $role): Response
     {
-        return $next($request);
-        // if(Auth::check()){
-        //     if(Auth::user()->role_id == 1){ // Admin User
-        //         return $next($request);
-        //     } else if( Auth::user()->role_id == 2){ // Recruiter
-        //         return $next($request);
-        //     } else if(Auth::user()->role_id == 3){ // Job seeker
-        //         return $next($request);
-        //     } else {
-        //         return abort(403, 'Unidentified User');
-        //     }
-        // } else {
-        //     return redirect('/loginn')->with('Message', "You are not Logged In");
-        // }
+        if(Auth::check()){
+            if(Auth::user()->role_id == $role){
+                return $next($request);
+            } else {
+                abort('403');
+            }
+        } else {
+            return redirect('/login')->with('Message', "You are not Logged In");
+        }
     }
 }
