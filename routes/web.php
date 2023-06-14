@@ -32,5 +32,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // RECRUITERS ROUTES
-Route::get('/company_home', [RecruitersController::class, 'home'])->name('recruiters_homePage');
-Route::get('/company_registration', [RecruitersController::class, 'registration'])->name('company_registration');
+Route::middleware(['auth','role:2'])->group(function(){
+    // Recruiters homepage
+    Route::get('/company_home', [RecruitersController::class, 'home'])->name('recruiters_homePage');
+    // Company Profile
+    Route::get('/company_profile', [RecruitersController::class, 'registration'])->name('company_registration');
+});
+
