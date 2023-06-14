@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecruitersController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +26,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+
+// RECRUITERS ROUTES
+Route::get('/company_home', [RecruitersController::class, 'home'])->name('recruiters_homePage');
+Route::get('/company_registration', [RecruitersController::class, 'registration'])->name('company_registration');
