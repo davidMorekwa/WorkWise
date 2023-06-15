@@ -57,15 +57,15 @@
             <a href="#" class="menu-link">
                 <ion-icon name="bookmarks-outline"></ion-icon> Bookmarks
             </a>
-            <a href="#" class="menu-link">
+            {{-- <a href="#" class="menu-link">
                 <ion-icon name="mail-unread-outline"></ion-icon> Message
-            </a>
+            </a> --}}
             <a href="#" class="menu-link">
                 <ion-icon name="settings-outline"></ion-icon> Settings
             </a>
         </div>
         <!-- AUTHENTICATION -->
-        <div class="authentication">
+        {{-- <div class="authentication">
             @if (Route::has('login'))
                 <div class="authentication-input">
                     @auth
@@ -78,15 +78,44 @@
                         @endif @endauth
                     </div>
                 @endif
-            </div>
+            </div> --}}
             <!-- PROFILE -->
-            <div class="profile">
-                <img src="assets/person.jpg" alt="Person" />
-                <div class="profile-name">
-                    <h4>Steve Mike</h4>
-                    <p>Web Development</p>
-                </div>
-            </div>
+            <ul class="navbar-nav ms-auto">
+            @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item authentication-input">
+                                    <a class="nav-link" href="{{ route('login') }}"
+                                        style="color: aliceblue; font-size:1.3rem;">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}"
+                                        style="color: aliceblue; font-size:1.3rem;">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+            </ul>
         </div>
 
         <!-- MAIN -->
