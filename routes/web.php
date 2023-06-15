@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RecruitersController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +21,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -32,10 +29,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // RECRUITERS ROUTES
-Route::middleware(['auth','role:2'])->group(function(){
-    // Recruiters homepage
-    Route::get('/company_home', [RecruitersController::class, 'home'])->name('recruiters_homePage');
-    // Company Profile
-    Route::get('/company_profile', [RecruitersController::class, 'registration'])->name('company_registration');
-});
 
