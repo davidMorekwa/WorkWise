@@ -113,6 +113,18 @@ body {
     color: var(--whiteblue);
 }
 
+.auth-tabs {
+    text-transform: uppercase;
+    background-color: var(--whiteblue);
+    padding: 5px 1rem;
+    border-radius: 10px;
+    margin: 0 1rem;
+}
+.auth-tabs:hover{
+    background-color: var(--secondarycolor);
+    color: var(--whiteblue);
+}
+
 .profile {
     display: flex;
     flex-direction: row;
@@ -540,3 +552,5 @@ body {
     }
 
 }
+
+/* others */
