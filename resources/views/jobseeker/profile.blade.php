@@ -5,14 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header"
-                        style="background-color: #556973; font-size:1.8rem; font-weight:600; text-transform:uppercase; text-align:center; color:aliceblue";>
-                        {{ __('Register') }}</div>
-
-                    <div class="card-body">
+                    <div class="card-body" style="text-align: center">
+                        <h3>Your Profile</h3>
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
-
                             {{-- first name --}}
                             <div class="row mb-3">
                                 <label for="fname"
@@ -21,7 +17,7 @@
                                 <div class="col-md-6">
                                     <input id="fname" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="fname"
-                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        value="{{ Auth::user()->fname }}" required autocomplete="name" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -39,7 +35,7 @@
                                 <div class="col-md-6">
                                     <input id="lname" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="lname"
-                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        value="{{ Auth::user()->lname }}" required autocomplete="name" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -57,7 +53,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email">
+                                        value="{{ Auth::user()->email }}" required autocomplete="email" readonly>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -67,29 +63,17 @@
                                 </div>
                             </div>
 
-                            {{-- user-role --}}
+                            {{-- phone number --}}
                             <div class="row mb-3">
-                                <label for="role"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
-
-                                <select id="role" name="role"
-                                    style="background-color: #556973; font-size:1rem; text-transform:capitalize; text-align:center; color:aliceblue; width:350px">
-                                    <option value="3">Job Seeker</option>
-                                    <option value="2">Recruiter</option>
-                                </select>
-                            </div>
-
-                            {{-- password --}}
-                            <div class="row mb-3">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                <label for="phone_number"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Phone Number') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                    <input id="phone_number" type="number"
+                                        class="form-control @error('phone_number') is-invalid @enderror" name="phone_number"
                                         required autocomplete="new-password">
 
-                                    @error('password')
+                                    @error('phone_number')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -97,22 +81,19 @@
                                 </div>
                             </div>
 
-                            {{-- confirm-password --}}
+                            {{-- user-role --}}
                             <div class="row mb-3">
-                                <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
+                                <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}
+                                </label>
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation" required autocomplete="new-password">
-                                </div>
-                            </div>
+                                    <input id="email" type="email" class="form-control" name="role-id"
+                                        value="{{ Auth::user()->role_id }}" readonly>
 
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
-                                    </button>
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                         </form>
