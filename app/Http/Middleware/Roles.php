@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,6 +17,7 @@ class Roles
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
+        // return dd($next($request));
         if(Auth::check()){
             if(Auth::user()->role_id == $role){
                 return $next($request);
