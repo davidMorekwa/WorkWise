@@ -90,6 +90,12 @@ body {
     background-color: var(--secondarycolor);
 }
 
+.authentication-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .authentication a {
     padding: 9px;
@@ -115,12 +121,13 @@ body {
 
 .auth-tabs {
     text-transform: uppercase;
-    background-color: var(--whiteblue);
+    background-color: var(--primarycolor);
     padding: 5px 1rem;
     border-radius: 10px;
-    margin: 0 1rem;
+    margin: 1rem;
 }
-.auth-tabs:hover{
+
+.auth-tabs:hover {
     background-color: var(--secondarycolor);
     color: var(--whiteblue);
 }

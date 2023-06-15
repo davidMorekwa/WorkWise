@@ -3,7 +3,7 @@
     .auth-button {
         background-color: #556973;
         text-transform: uppercase;
-        font-size: 1.125rem;
+        font-size: 1.1rem;
         border-radius: 5px;
         border: none;
         padding: .4rem;
@@ -21,7 +21,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header"
-                        style="background-color: #556973; font-size:1.8rem; font-weight:600; text-transform:capitalize; text-align:center; color:aliceblue;">
+                        style="background-color: #556973; font-size:1.5rem; font-weight:600; text-transform:capitalize; text-align:center; color:aliceblue;">
                         {{ __('Login') }}</div>
 
                     <div class="card-body">
@@ -30,10 +30,10 @@
 
                             <div class="row mb-3">
                                 <label for="email" class="col-md-4 col-form-label text-md-end"
-                                    style="font-size: 1.2rem">{{ __('Email Address') }}</label>
+                                    style="font-size: 1rem">{{ __('Email Address') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" style="font-size: 1.1rem"
+                                    <input id="email" type="email" style="font-size: 1rem"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" required autocomplete="email" autofocus>
 
@@ -47,10 +47,10 @@
 
                             <div class="row mb-3">
                                 <label for="password" class="col-md-4 col-form-label text-md-end"
-                                    style="font-size: 1.2rem">{{ __('Password') }}</label>
+                                    style="font-size: 1rem">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" style="font-size: 1.1rem"
+                                    <input id="password" type="password" style="font-size: 1rem"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
 
@@ -81,7 +81,7 @@
                             <div class="row mb-0">
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}"
-                                        style="font-size: 1.1rem; color:#0b1c24; font-weight:600;">
+                                        style="font-size: 1rem; color:#0b1c24; font-weight:600;">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
