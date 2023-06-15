@@ -32,7 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // RECRUITERS ROUTES
-Route::middleware(['auth','role:2'])->group(function(){
+Route::middleware(['auth','role:2', 'verified'])->group(function(){
     // Recruiters homepage
     Route::get('/company_home', [RecruitersController::class, 'home'])->name('recruiters_homePage');
     // Company Profile
