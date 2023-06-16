@@ -34,7 +34,7 @@ class VerificationController extends Controller
         if(Auth::user()->role_id == 1){ // Admin User
             return route('admin');
         } else if( Auth::user()->role_id == 2){ // Recruiter
-            return route('recruiters_homePage');
+            return route('RecruitersHomePage.show');
         } else if(Auth::user()->role_id == 3){ // Job seeker
             return route('jobSeekersHome');
         } else {
