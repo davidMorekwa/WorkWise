@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobPost;
 use App\Models\Recruiters;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,5 +37,29 @@ class RecruitersController extends Controller
         $profile_data = Recruiters::where('userId', Auth::user()->id)->first();
         return view('recruiters.profile')->with('Profile', $profile_data);
     }
+    // Show update profile form
+    public function updateProfileForm(){
+        // return view()
+    }
 
+    // Show job post form
+    public function postAJob(){
+        return view('recruiters.postAJob');
+    }
+    // Create a Job Post
+    public function createAJobPost(Request $request){
+        // dd($request);
+        $organisation = Recruiters::where('userId', Auth::user()->id)->first('id');
+        JobPost::create([
+            'job_title'=>$request->job_title,
+            'position_title'=>$request->position_title,
+            'overview'=>$request->job_overview,
+            'responsibilities'=>$request->responsibilities,
+            'type'=>$request->job_type,
+            'qualifications'=>$request->qualifications,
+            'status' => false,
+            'organisation'=>$organisation->id
+        ]);
+        return redirect()->route('RecruitersHomePage.show');
+    }
 }

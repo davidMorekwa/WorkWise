@@ -34,7 +34,7 @@ class LoginController extends Controller
         if(Auth::user()->role_id == 1){ // Admin User
             return redirect('/admin');
         } else if( Auth::user()->role_id == 2){ // Recruiter
-            return redirect('/company_home');
+            return redirect()->route('RecruitersHomePage.show');
         } else if(Auth::user()->role_id == 3){ // Job seeker
             return redirect('/');
         } else {
