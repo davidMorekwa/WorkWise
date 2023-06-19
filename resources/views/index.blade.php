@@ -75,7 +75,7 @@
                 </div>
         </div> --}}
         {{-- @endif --}}
-        
+
         <ul class="navbar-nav ms-auto" style="display:flex; align-items:center; padding:.8rem; flex-direction:column;">
             <!-- Authentication Links -->
             @guest

@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('index');
 })->name('jobSeekersHome');
 
+
 Auth::routes([
     'verify' => true
 ]);
