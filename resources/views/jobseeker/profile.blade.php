@@ -86,6 +86,35 @@
                                     </script>
                                 </div>
                             </div>
+
+                            {{-- self-description --}}
+                            <div class="row mb-3">
+                                <label for="self-description"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Describe yourself') }}</label>
+
+                                <div class="col-md-6">
+                                    <textarea id="self-description" placeholder="Describe yourself" rows="5"></textarea>
+
+                                </div>
+                            </div>
+
+                            {{-- CV --}}
+                            <div class="row mb-3">
+                                <label for="cv"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Enter a file of your CV') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="cv" type="file"
+                                        class="form-control @error('file') is-invalid @enderror" name="cv" required
+                                        autocomplete="cv">
+
+                                    @error('cv')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
