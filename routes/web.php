@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecruitersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,19 +16,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('jobSeekersHome');
 
-Auth::routes([
-    'verify' => true
-]);
+
 
 
 // RECRUITERS ROUTES
 Route::middleware(['auth', 'role:2', 'verified'])->group(function () {
     // Recruiters homepage
-    Route::get('/company_home', [RecruitersController::class, 'home'])->name('recruiters_homePage');
-    // Company Profile
-    Route::get('/company_profile', [RecruitersController::class, 'registration'])->name('company_registration');
+    Route::get('/recruiter_home', [RecruitersController::class, 'home'])->name('RecruitersHomePage.show');
+    // create recruiters profile
+    Route::post('/recruiterProfile', [RecruitersController::class, 'createProfile'])->name('RecruiterProfile.create');
+    // Recruiters Profile form
+    Route::get('/recruiter_profile', [RecruitersController::class, 'registration'])->name('company_registration');
+    // Recruiters profile page
+    Route::get('/recruiterProfile', [RecruitersController::class, 'showProfile'])->name('RecruiterProfile.show');
+    // TODO: Update Organisation Profile
 });
 
 // JOBSEEKER ROUTES
