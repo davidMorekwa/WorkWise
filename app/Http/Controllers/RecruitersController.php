@@ -43,7 +43,22 @@ class RecruitersController extends Controller
     // Show update profile form
     public function updateProfileForm()
     {
-        // return view()
+        $profile_data = Recruiters::where('userId', Auth::user()->id)->first();
+        // dd($profile_data);
+        // return $profile_data;
+        return view('recruiters.updateProfile')->with('profile', $profile_data);
+    }
+    // Update recrutier profile
+    public function updateProfile(Request $request){
+        $profile_data = Recruiters::where('userId', Auth::user()->id)->first();
+        $profile_data->organisation_name = $request->organisation_name;
+        $profile_data->website = $request->website;
+        $profile_data->email = $request->email;
+        $profile_data->about = $request->aboutUs;
+        $profile_data->location = $request->country;
+        $profile_data->industry = $request->industry;
+        $profile_data->save();
+        return redirect()->route('RecruiterProfile.show');
     }
 
     // Show job post form

@@ -34,7 +34,10 @@ Route::middleware(['auth', 'role:2', 'verified'])->group(function () {
     Route::get('/recruiter_profile', [RecruitersController::class, 'registration'])->name('company_registration');
     // Recruiters profile page
     Route::get('/recruiterProfile', [RecruitersController::class, 'showProfile'])->name('RecruiterProfile.show');
-    // TODO: Update Organisation Profile
+    // Show update profile page
+    Route::get('/updateProfileForm', [RecruitersController::class, 'updateProfileForm'])->name('EditRecruiterProfile.show');
+    // Update Organisation Profile
+    Route::post('/updateProfile', [RecruitersController::class, 'updateProfile'])->name('RecruiterProfile.update');
     // Show Job Post Form
     Route::get('/jobPost', [RecruitersController::class, 'postAJob'])->name('JobPostForm.show');
     // Create Job Post
