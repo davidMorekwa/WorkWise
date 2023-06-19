@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-md" style="background-color: #556973">
             <div class="container">
                 <a class="navbar-brand"
-                    style="text-transform:uppercase; font-size:1.6rem; font-weight:800;color:aliceblue;"
+                    style="text-transform:uppercase; font-size:1.5rem; font-weight:800;color:aliceblue;"
                     href="{{ url('/') }}">
                     Workwise
                 </a>
@@ -51,7 +51,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    {{-- <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -87,7 +87,7 @@
                                 </div>
                             </li>
                         @endguest
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
         </nav>
