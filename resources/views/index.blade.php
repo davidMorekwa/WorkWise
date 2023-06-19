@@ -17,20 +17,13 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="initial.css">
 </head>
-<style>
-    .wrk-title:hover {
-        color: blueviolet;
-    }
-</style>
 
 <body class="antialiased">
 
     <!-- SIDENAV -->
     <div class="sidenav" id="sidenav">
         <!-- LOGO -->
-        <a class="navbar-brand wrk-title"
-            style="text-transform:uppercase; font-size:1.6rem; font-weight:800;color:aliceblue;"
-            href="{{ url('/') }}">
+        <a class="navbar-title" href="{{ url('/') }}">
             Workwise
         </a>
         <!-- SIDE MENU -->
@@ -47,7 +40,7 @@
             {{-- <a href="#" class="menu-link">
                 <ion-icon name="mail-unread-outline"></ion-icon> Message
             </a> --}}
-            <a href="#" class="menu-link">
+            <a href="{{ url('/home_profile') }}" class="menu-link">
                 <ion-icon name="settings-outline"></ion-icon> Settings
             </a>
         </div>
@@ -67,11 +60,11 @@
                 @endif
             </div> --}}
         <!-- PROFILE -->
-        <div class="authentication">
+        {{-- <div class="authentication">
             @if (Route::has('login'))
                 <div class="authentication-details">
                     @auth
-                        <a href="{{ url('/home') }}" class="auth-tabs">Home</a>
+                        <a href="{{ route('logout') }}" class="auth-tabs">Logout</a>
                     @else
                         <a href="{{ route('login') }}" class="auth-tabs">Login</a>
 
@@ -80,8 +73,45 @@
                         @endif
                     @endauth
                 </div>
-        </div>
-        @endif
+        </div> --}}
+        {{-- @endif --}}
+        <ul class="navbar-nav ms-auto"
+            style="display:flex;
+        align-items:center; padding:.8rem; flex-direction:column;">
+            <!-- Authentication Links -->
+            @guest
+                @if (Route::has('login'))
+                    <li class="nav-item-mine">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                @endif
+
+                @if (Route::has('register'))
+                    <li class="nav-item-mine">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                @endif
+            @else
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
+        </ul>
     </div>
 
     <!-- MAIN -->

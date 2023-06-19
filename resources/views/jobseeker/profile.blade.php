@@ -69,7 +69,7 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Phone Number') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="phone_number" type="number"
+                                    <input id="phone_number" type="tel"
                                         class="form-control @error('phone_number') is-invalid @enderror" name="phone_number"
                                         required autocomplete="new-password">
 
@@ -78,22 +78,12 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
-                            </div>
-
-                            {{-- user-role --}}
-                            <div class="row mb-3">
-                                <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}
-                                </label>
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="role-id"
-                                        value="{{ Auth::user()->role_id }}" readonly>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <script>
+                                        const phoneInputField = document.querySelector("#phone_number");
+                                        const phoneInput = window.intlTelInput(phoneInputField, {
+                                            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                                        });
+                                    </script>
                                 </div>
                             </div>
                         </form>
