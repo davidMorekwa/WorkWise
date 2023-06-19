@@ -61,7 +61,7 @@
                 <a id="job-management" class="nav-link" href="">Job Management
                     <div id="job-mgt">
                         <ul>
-                            <li class="nav-link">Post a Job</li>
+                            {{-- <a style="display: inline" class="nav-link" href="{{ route('JobPostForm.show')}}"><li class="nav-link">Post a Job</li></a> --}}
                             <li class="nav-link">Recent Job postings</li>
                         </ul>
                     </div>
@@ -79,6 +79,8 @@
                         }
                     )
                 </script>
+                <a style="display: inline" class="nav-link" href="{{ route('JobPostForm.show')}}"><li class="nav-link">Post a Job</li></a>
+                <a style="display: inline" class="nav-link" href="{{ route('jobPosts.show')}}"><li class="nav-link">Recent Job Posts</li></a>
                 <a class="nav-link" href="">Review Resumes</a>
                 <a class="nav-link" href="{{ route('RecruiterProfile.show')}}">Company Profile</a>
                 <a class="nav-link" href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

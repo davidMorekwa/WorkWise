@@ -35,6 +35,14 @@ Route::middleware(['auth', 'role:2', 'verified'])->group(function () {
     // Recruiters profile page
     Route::get('/recruiterProfile', [RecruitersController::class, 'showProfile'])->name('RecruiterProfile.show');
     // TODO: Update Organisation Profile
+    // Show Job Post Form
+    Route::get('/jobPost', [RecruitersController::class, 'postAJob'])->name('JobPostForm.show');
+    // Create Job Post
+    Route::post('/createJobPost', [RecruitersController::class, 'createAJobPost'])->name('JobPost.create');
+    // Show recent job posts
+    Route::get('/recentPosts', [RecruitersController::class, 'recentJobPosts'])->name('jobPosts.show');
+    // Close job post
+    Route::post('/closeJobPost', [RecruitersController::class, 'closeJobPost'])->name('JobPost.close');
 });
 
 // JOBSEEKER ROUTES
