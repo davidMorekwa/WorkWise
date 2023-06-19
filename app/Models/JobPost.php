@@ -18,6 +18,4 @@ class JobPost extends Model
         'status',
         'type'
     ];
-
-    // protected $dates = ['closed_at'];
 }
