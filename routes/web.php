@@ -19,6 +19,9 @@ Route::get('/', function () {
 })->name('jobSeekersHome');
 
 
+Auth::routes([
+    'verify' => true
+]);
 
 
 // RECRUITERS ROUTES
