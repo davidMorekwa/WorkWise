@@ -38,14 +38,14 @@ class RecruitersController extends Controller
     public function showProfile()
     {
         $profile_data = Recruiters::where('userId', Auth::user()->id)->first();
-        return view('recruiters.profile')->with('Profile', $profile_data);
+        $organisation = Recruiters::where('userId', Auth::user()->id)->first();
+        $openJobs = JobPost::where('organisation', $organisation->id)->where('status', 1)->limit(2)->get();
+        return view('recruiters.profile')->with('Profile', $profile_data)->with('openJobs', $openJobs);
     }
     // Show update profile form
     public function updateProfileForm()
     {
         $profile_data = Recruiters::where('userId', Auth::user()->id)->first();
-        // dd($profile_data);
-        // return $profile_data;
         return view('recruiters.updateProfile')->with('profile', $profile_data);
     }
     // Update recrutier profile
