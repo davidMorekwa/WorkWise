@@ -28,7 +28,7 @@
         </a>
         <!-- SIDE MENU -->
         <div class="side-menu">
-            <a href="{{ url('/home_profile') }}" class="menu-link">
+            <a href="{{ url('/myprofile') }}" class="menu-link">
                 <ion-icon name="home-outline"></ion-icon> My Profile
             </a>
             <a href="{{ url('/') }}" class="menu-link">
@@ -65,10 +65,12 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
                         <a class="nav-item-mine" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
+
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

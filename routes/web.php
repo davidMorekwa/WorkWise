@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecruitersController;
+use App\Http\Controllers\JobseekerController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,9 @@ Route::middleware(['auth', 'role:2', 'verified'])->group(function () {
 
 // JOBSEEKER ROUTES
 Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/home_profile', [App\Http\Controllers\JobseekerController::class, 'jobseeker_profile'])->name('jobseeker-profile');
+    Route::get('/home', [HomeController::class, 'index'])->name('jobseeker-home');
+    // view jobseeker myprofile
+    Route::get('/myprofile', [JobseekerController::class, 'showProfile'])->name('my_profile.show');
+    // create jobseeker profile
+    Route::post('/myprofile', [JobseekerController::class, 'createProfile'])->name('my_profile.create');
 });

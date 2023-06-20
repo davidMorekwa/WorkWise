@@ -6,8 +6,8 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body" style="text-align: center">
-                        <h3>Your Profile</h3>
-                        <form method="POST" action="{{ route('register') }}">
+                        <h3>View Your Profile</h3>
+                        <form method="POST" action="{{ route('my_profile.create') }}">
                             @csrf
                             {{-- first name --}}
                             <div class="row mb-3">
@@ -17,7 +17,7 @@
                                 <div class="col-md-6">
                                     <input id="fname" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="fname"
-                                        value="{{ Auth::user()->fname }}" required autocomplete="name" autofocus>
+                                        value="{{ $Profile->fname }}" required autocomplete="name" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
                                 <div class="col-md-6">
                                     <input id="lname" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="lname"
-                                        value="{{ Auth::user()->lname }}" required autocomplete="name" autofocus>
+                                        value="{{ $Profile->lname }}" required autocomplete="name" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -53,7 +53,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ Auth::user()->email }}" required autocomplete="email" readonly>
+                                        value="{{ $Profile->email }}" required autocomplete="email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -71,7 +71,7 @@
                                 <div class="col-md-6">
                                     <input id="phone_number" type="tel"
                                         class="form-control @error('phone_number') is-invalid @enderror" name="phone_number"
-                                        required autocomplete="new-password">
+                                        value="{{ $Profile->phone_number }}">
 
                                     @error('phone_number')
                                         <span class="invalid-feedback" role="alert">
@@ -93,7 +93,8 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Describe yourself') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="self-description" placeholder="Describe yourself" rows="5"></textarea>
+                                    <textarea id="self-description" placeholder="Describe yourself" rows="5"
+                                        value="{{ $Profile->self_description }}"></textarea>
 
                                 </div>
                             </div>
@@ -106,13 +107,20 @@
                                 <div class="col-md-6">
                                     <input id="cv" type="file"
                                         class="form-control @error('file') is-invalid @enderror" name="cv" required
-                                        autocomplete="cv">
+                                        autocomplete="cv" value="{{ $Profile->cv }}">
 
                                     @error('cv')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Update Profile') }}
+                                    </button>
                                 </div>
                             </div>
                         </form>
