@@ -34,8 +34,9 @@
         text-align: center;
         padding-top: 7px;
     }
-    .nav-links-container .nav-link:hover{
+    .nav-links-container .nav-link:hover:not(#job-management){
         cursor: pointer;
+        border: 1px solid gray;
     }
     .nav-links-container .nav-link ul{
         list-style-type: none;
@@ -47,6 +48,40 @@
         padding: 12px;
         border-radius: 10px;
     }
+    #job-mgt{
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        width: 100%;
+        padding-top: 7px;
+    }
+    #job-mgt ul{
+        width: 100%;
+        padding: 0px;
+    }
+    #job-mgt ul li{
+        text-decoration: none;
+        color: gray;
+        width: 100%;
+        border-radius: 10px;
+        height: 29px;
+        margin: 5px 0px;
+    }
+    #job-mgt ul li:hover{
+        cursor: pointer;
+        color: black;
+        border: 1px solid gray;
+    }
+    #job-mgt ul li a{
+        text-decoration: none;
+        color: gray;
+    }
+    #job-mgt ul li a:hover{
+        cursor: pointer;
+        color: black;
+    }
+
 </style>
 @section('content')
     
@@ -58,14 +93,16 @@
         <div class="nav-links-container">
             <nav>
                 <a class="nav-link" href="">Dashboard</a>
-                <a id="job-management" class="nav-link" href="">Job Management
+                <div id="job-management" class="nav-link">
+                    Job Management
                     <div id="job-mgt">
                         <ul>
-                            {{-- <a style="display: inline" class="nav-link" href="{{ route('JobPostForm.show')}}"><li class="nav-link">Post a Job</li></a> --}}
-                            <li class="nav-link">Recent Job postings</li>
+                            <li><a href="{{ route('JobPostForm.show') }}">Post a Jobs</a></li>
+                            <li><a href="{{ route('jobPosts.show') }}">Recent Job Posts</a></li>
                         </ul>
                     </div>
-                </a>
+                </div>
+                
                 <script>
                     $(document).ready(function(){
                         $('#job-mgt').hide()
@@ -79,8 +116,6 @@
                         }
                     )
                 </script>
-                <a style="display: inline" class="nav-link" href="{{ route('JobPostForm.show')}}"><li class="nav-link">Post a Job</li></a>
-                <a style="display: inline" class="nav-link" href="{{ route('jobPosts.show')}}"><li class="nav-link">Recent Job Posts</li></a>
                 <a class="nav-link" href="">Review Resumes</a>
                 <a class="nav-link" href="{{ route('RecruiterProfile.show')}}">Company Profile</a>
                 <a class="nav-link" href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

@@ -54,6 +54,63 @@
 
     .paragraph {
         color: gray;
+        text-decoration: none;
+    }
+    .job-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .job-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 45%;
+        padding: 10px 0px;
+        margin: 12px;
+        border-radius: 9px;
+    }
+
+    .job-card .job-details {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: 65%;
+    }
+
+    .job-card .job-details>div span {
+        color: gray;
+    }
+
+    .job-card>div>div {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .job-card img {
+        width: 20%;
+        margin-right: 12px;
+    }
+
+    .job-card>div button {
+        width: 125px;
+        color: white;
+        margin: 5px;
+    }
+
+    .job-card>div .close {
+        background-color: rgba(112, 4, 4, 0.845);
+        border: 1px solid red;
+    }
+
+    .job-card>div .show {
+        background: #894c75;
+        border: none;
     }
 </style>
 @section('recruiter-content')
@@ -106,15 +163,35 @@
         </div>
         <div>
             <h4>Recent Job Openings</h4>
-            cards showing recent openings
+            <div class="job-container">
+                @foreach ($openJobs as $job)
+                    <div class="job-card shadow-sm" id="cards">
+                        <div class="job-details">
+                            <img src="assets/googleicon.svg" alt="" />
+                            <div>
+                                <h4>{{ $Profile->organisation_name }}</h4>
+                                <span>{{ $job->job_title }}</span>
+                                {{-- TODO: JOB LOCATION --}}
+                                <span>{{ $job->type }}</span>
+                            </div>
+                        </div>
+                        <form method="POST", action="{{ route('JobPost.close') }}">
+                            @csrf
+                            <button class="btn show" style="color: white">Show Post</button>
+                            <input type="text" name="post_id" value="{{ $job->id }}" hidden>
+                            <button type="submit" class="btn close">Close</button>
+                        </form>
+                    </div>
+                @endforeach
+            </div>
             <hr>
-            <p class="paragraph">Show all openings
+            <a href="{{route('jobPosts.show')}}" class="paragraph">Show all openings
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-arrow-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                         d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                 </svg>
-            </p>
+            </a>
         </div>
     </div>
 @endsection
