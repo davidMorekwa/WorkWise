@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/email/verify';
 
     /**
      * Create a new controller instance.
@@ -75,4 +75,24 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+	/**
+	 * Where to redirect users after registration.
+	 * 
+	 * @return string
+	 */
+	public function getRedirectTo() {
+		return $this->redirectTo;
+	}
+	
+	/**
+	 * Where to redirect users after registration.
+	 * 
+	 * @param string $redirectTo Where to redirect users after registration.
+	 * @return self
+	 */
+	public function setRedirectTo($redirectTo): self {
+		$this->redirectTo = $redirectTo;
+		return $this;
+	}
 }
