@@ -9,12 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class JobseekerController extends Controller
 {
-    public function updateprofile()
-    {
-        return view('jobseeker.updateprofile');
-    }
-
-    public function viewprofile()
+    public function myprofile()
     {
         return view('jobseeker.myprofile');
     }
@@ -32,7 +27,7 @@ class JobseekerController extends Controller
             'cv' => $request->cv,
             'userId' => Auth::user()->id,
         ]);
-        
+
         return view('index');
 
     }
@@ -43,7 +38,7 @@ class JobseekerController extends Controller
         return view('jobseeker.viewprofile')->with('Profile', $profile_data);
     }
 
-    public function fetchtest()
+    public function viewProfile()
     {
         $data = DB::table('jobseekers')->where('userId', Auth::user()->id)->first();
         // dd($data);

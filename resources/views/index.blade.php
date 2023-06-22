@@ -28,19 +28,27 @@
         </a>
         <!-- SIDE MENU -->
         <div class="side-menu">
-            <a href="{{ url('/myprofile') }}" class="menu-link">
-                <ion-icon name="home-outline"></ion-icon> Add Profile
-            </a>
-            <a href="{{ url('/') }}" class="menu-link">
-                <ion-icon name="newspaper-outline"></ion-icon> Find jobs
-            </a>
-            <a href="#" class="menu-link">
-                <ion-icon name="bookmarks-outline"></ion-icon> Bookmarks
-            </a>
-
-            <a href="{{ url('/viewprofile') }}" class="menu-link">
-                <ion-icon name="settings-outline"></ion-icon> View Profile
-            </a>
+            @guest
+                <a href="{{ url('/') }}" class="menu-link">
+                    <ion-icon name="newspaper-outline"></ion-icon> Find jobs
+                </a>
+                <a href="#" class="menu-link">
+                    <ion-icon name="bookmarks-outline"></ion-icon> Bookmarks
+                </a>
+            @else
+                <a href="{{ url('/myprofile') }}" class="menu-link">
+                    <ion-icon name="home-outline"></ion-icon> Add Profile
+                </a>
+                <a href="{{ url('/viewprofile') }}" class="menu-link">
+                    <ion-icon name="settings-outline"></ion-icon> View Profile
+                </a>
+                <a href="{{ url('/') }}" class="menu-link">
+                    <ion-icon name="newspaper-outline"></ion-icon> Find jobs
+                </a>
+                <a href="#" class="menu-link">
+                    <ion-icon name="bookmarks-outline"></ion-icon> Bookmarks
+                </a>
+            @endguest
         </div>
 
         <ul class="navbar-nav ms-auto" style="display:flex; align-items:center; padding:.8rem; flex-direction:column;">

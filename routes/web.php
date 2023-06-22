@@ -52,19 +52,11 @@ Route::middleware(['auth', 'role:2', 'verified'])->group(function () {
 
 // JOBSEEKER ROUTES
 Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('jobseeker-home');
-    // create jobseeker myprofile
-    // Route::get('/myprofile', [JobseekerController::class, 'showProfile'])->name('my_profile.show');
-    Route::get('/myprofile', function () {
-        return view('jobseeker.myprofile');
-    })->name('jobSeekersmyProfile');
+    // open the create profile page
+    Route::get('/myprofile', [JobseekerController::class, 'myprofile'])->name('my_profile.view');
     // create jobseeker profile
     Route::post('/myprofile', [JobseekerController::class, 'createProfile'])->name('my_profile.create');
-    // view profile
-    Route::get('/viewprofile', function () {
-        return view('jobseeker.viewprofile');
-    })->name('jobSeekersProfile');
-
-    Route::get('/viewprofile', [JobseekerController::class, 'fetchtest']);
+    // view profile of the created jobseeker profile
+    Route::get('/viewprofile', [JobseekerController::class, 'viewProfile'])->name('view_profile.view');
 
 });
