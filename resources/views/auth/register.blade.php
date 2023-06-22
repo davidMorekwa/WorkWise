@@ -102,8 +102,10 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password" style="font-size: .9rem"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
+
                                         required autocomplete="new-password"
                                         placeholder="Must be 8 characters">
+
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -121,7 +123,9 @@
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
                                         style="font-size: .9rem" name="password_confirmation" required
+
                                         placeholder="Must be 8 characters" utocomplete="new-password">
+
                                 </div>
                             </div>
 
