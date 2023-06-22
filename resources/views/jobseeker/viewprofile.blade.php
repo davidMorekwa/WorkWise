@@ -93,7 +93,7 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Describe yourself') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="self-description" placeholder="Describe yourself" rows="5" value="{{ $profile_data->self_description }}" readonly></textarea>
+                                    <textarea id="self-description" rows="3" value="{{ $profile_data->self_description }}" readonly></textarea>
 
                                 </div>
                             </div>
@@ -115,11 +115,11 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mb-0">
+                            {{-- <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <a href="{{ url('/update_profile_edit') }}">Update Profile</a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </form>
                     </div>
                 </div>

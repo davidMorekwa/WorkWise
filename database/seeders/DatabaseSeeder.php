@@ -23,17 +23,16 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
-
-        // DB::table('user_roles')->insert([
-        //     'Roles'=>"Admin",
-        // ]);
-        // DB::table('user_roles')->insert([
-        //     'Roles'=>"Recruiter",
-        // ]);
-        // DB::table('user_roles')->insert([
-        //     'Roles'=>"Job Seeker",
-
+        DB::table('user_roles')->insert([
+            'Roles' => "Admin",
+        ]);
+        DB::table('user_roles')->insert([
+            'Roles' => "Recruiter",
+        ]);
+        DB::table('user_roles')->insert([
+            'Roles' => "Job Seeker",
+        ]);
         // User::factory(5)->create();
-        JobPost::factory(5)->create();
+        // JobPost::factory(5)->create();
     }
 }
