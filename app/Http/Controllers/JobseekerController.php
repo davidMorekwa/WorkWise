@@ -32,7 +32,8 @@ class JobseekerController extends Controller
             'cv' => $request->cv,
             'userId' => Auth::user()->id,
         ]);
-        return view('jobseeker.myprofile');
+        
+        return view('index');
 
     }
 
