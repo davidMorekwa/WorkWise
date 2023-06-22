@@ -72,7 +72,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email" style="font-size: .9rem"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email">
+                                        value="{{ old('email') }}" required autocomplete="email" placeholder="Enter Email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">

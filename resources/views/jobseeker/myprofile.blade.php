@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body" style="text-align: center">
-                        <h3>View Your Profile</h3>
+                        <h3>Create Your Profile</h3>
                         <form method="POST" action="{{ route('my_profile.create') }}">
                             @csrf
                             {{-- first name --}}
