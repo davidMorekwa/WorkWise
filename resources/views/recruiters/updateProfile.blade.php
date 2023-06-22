@@ -11,10 +11,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Create Profile') }}</div>
+                    <div class="card-header">{{ __('Edit Profile') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('RecruiterProfile.create') }}">
+                        <form method="POST" action="{{ route('RecruiterProfile.update') }}">
                             @csrf
                             {{-- Comapny name --}}
                             <div class="row mb-3">
@@ -23,7 +23,7 @@
 
                                 <div class="col-md-6">
                                     <input id="organisation_name" type="text" class="form-control" name="organisation_name"
-                                        value="{{ old('company_name') }}" required autocomplete="company_name" autofocus>
+                                        value="{{ $profile->organisation_name }}" required autocomplete="company_name" autofocus>
                                 </div>
                             </div>
                             {{-- Company website --}}
@@ -33,7 +33,7 @@
 
                                 <div class="col-md-6">
                                     <input id="organisation_website" type="text" class="form-control" name="organisation_website"
-                                        value="{{ old('company_website') }}" autocomplete="company_website">
+                                        value="{{ $profile->website }}" autocomplete="company_website">
                                 </div>
                             </div>
                             {{-- email --}}
@@ -44,7 +44,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email"
+                                        value="{{ $profile->email }}" required autocomplete="email"
                                         placeholder="e.g. info@workwise.com">
 
                                     @error('email')
@@ -61,7 +61,7 @@
 
                                 <div class="col-md-6">
                                     <!-- Country names and Country Name -->
-                                    <select class="form-select" id="country" name="country">
+                                    <select class="form-select" id="country" name="country" required>
                                         <option value="">country</option>
                                         <option value="Afghanistan">Afghanistan</option>
                                         <option value="Aland Islands">Aland Islands</option>
@@ -338,7 +338,7 @@
 
                                 <div class="col-md-6">
                                     <!-- Industries -->
-                                    <select class="form-select" name="industry" id="industry">
+                                    <select class="form-select" name="industry" id="industry" required >
                                         <option value="Accounting">Accounting</option>
                                         <option value="Airlines/Aviation">Airlines/Aviation</option>
                                         <option value="Alternative Dispute Resolution">Alternative Dispute Resolution
@@ -504,13 +504,13 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('About Us') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="text_aboutUs" name="aboutUs" id="aboutUs" cols="50" rows="10" required></textarea>
+                                    <textarea id="text_aboutUs" name="aboutUs" id="aboutUs" cols="50" rows="10" required>{{$profile->about}}</textarea>
                                 </div>
                             </div>
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Create Profile') }}
+                                        {{ __('Update Profile') }}
                                     </button>
                                 </div>
                             </div>
