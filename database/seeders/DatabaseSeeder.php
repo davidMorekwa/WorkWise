@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\User;
+
 use App\Models\UserRole;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         DB::table('user_roles')->insert([
             'Roles'=>"Job Seeker",
         ]);
-        User::factory(5)->create();
+        // User::factory(5)->create();
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

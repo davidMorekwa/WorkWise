@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\jobseekers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class JobseekerController extends Controller
 {
@@ -23,13 +24,13 @@ class JobseekerController extends Controller
     {
         // dd($request);
         jobseekers::create([
-            'userId' => Auth::user()->id,
             'fname' => $request->fname,
             'email' => $request->email,
             'lname' => $request->lname,
             'phone_number' => $request->phone_number,
             'self_description' => $request->self_description,
             'cv' => $request->cv,
+            'userId' => Auth::user()->id,
         ]);
         return view('jobseeker.myprofile');
 
@@ -38,6 +39,14 @@ class JobseekerController extends Controller
     public function showProfile()
     {
         $profile_data = jobseekers::where('userId', Auth::user()->id)->first();
-        return view('jobseeker.myprofile')->with('Profile', $profile_data);
+        return view('jobseeker.viewprofile')->with('Profile', $profile_data);
+    }
+
+    public function fetchtest()
+    {
+        $data = DB::table('jobseekers')->where('userId', Auth::user()->id)->first();
+        // dd($data);
+        return view('jobseeker.viewprofile')->with('profile_data', $data);
+
     }
 }

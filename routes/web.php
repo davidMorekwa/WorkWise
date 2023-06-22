@@ -42,8 +42,23 @@ Route::middleware(['auth', 'role:2', 'verified'])->group(function () {
 // JOBSEEKER ROUTES
 Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('jobseeker-home');
-    // view jobseeker myprofile
-    Route::get('/myprofile', [JobseekerController::class, 'showProfile'])->name('my_profile.show');
+    // create jobseeker myprofile
+    // Route::get('/myprofile', [JobseekerController::class, 'showProfile'])->name('my_profile.show');
+    Route::get('/myprofile', function () {
+        return view('jobseeker.myprofile');
+    })->name('jobSeekersmyProfile');
     // create jobseeker profile
     Route::post('/myprofile', [JobseekerController::class, 'createProfile'])->name('my_profile.create');
+    // view profile
+    Route::get('/viewprofile', function () {
+        return view('jobseeker.viewprofile');
+    })->name('jobSeekersProfile');
+
+    Route::get('/viewdata/{userId}', function ($id) {
+        $data = DB::table('jobseekers')->where('userId', $id)->first();
+        return view('jobseeker.viewprofile', ['data' => $data]);
+    })->name('jobSeekersProfileview');;
+
+    Route::get('/viewprofile', [JobseekerController::class, 'fetchtest']);
+
 });

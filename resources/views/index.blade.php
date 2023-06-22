@@ -29,7 +29,7 @@
         <!-- SIDE MENU -->
         <div class="side-menu">
             <a href="{{ url('/myprofile') }}" class="menu-link">
-                <ion-icon name="home-outline"></ion-icon> My Profile
+                <ion-icon name="home-outline"></ion-icon> Add Profile
             </a>
             <a href="{{ url('/') }}" class="menu-link">
                 <ion-icon name="newspaper-outline"></ion-icon> Find jobs
@@ -38,8 +38,8 @@
                 <ion-icon name="bookmarks-outline"></ion-icon> Bookmarks
             </a>
 
-            <a href="{{ url('/home_profile') }}" class="menu-link">
-                <ion-icon name="settings-outline"></ion-icon> Settings
+            <a href="{{ url('/viewprofile') }}" class="menu-link">
+                <ion-icon name="settings-outline"></ion-icon> View Profile
             </a>
         </div>
 
