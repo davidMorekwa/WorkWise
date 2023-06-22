@@ -72,7 +72,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email" style="font-size: .9rem"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email">
+                                        value="{{ old('email') }}" required autocomplete="email" placeholder="Enter Email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -102,7 +102,7 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password" style="font-size: .9rem"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password">
+                                        required autocomplete="new-password" placeholder="Password must be 8 characters">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -120,7 +120,7 @@
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
                                         style="font-size: .9rem" name="password_confirmation" required
-                                        autocomplete="new-password">
+                                        autocomplete="new-password" placeholder="Password must be 8 characters">
                                 </div>
                             </div>
 
