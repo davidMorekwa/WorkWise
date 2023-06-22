@@ -102,11 +102,14 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password" style="font-size: .9rem"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password" placeholder="Password must be 8 characters">
+
+                                        required autocomplete="new-password"
+                                        placeholder="Must be 8 characters">
+
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <strong style="text-transform: capitalize">password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 digit character.</strong>
                                         </span>
                                     @enderror
                                 </div>
@@ -120,7 +123,9 @@
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
                                         style="font-size: .9rem" name="password_confirmation" required
-                                        autocomplete="new-password" placeholder="Password must be 8 characters">
+
+                                        placeholder="Must be 8 characters" utocomplete="new-password">
+
                                 </div>
                             </div>
 
