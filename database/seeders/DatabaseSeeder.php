@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
-
         // DB::table('user_roles')->insert([
         //     'Roles'=>"Admin",
         // ]);
@@ -32,8 +31,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         // DB::table('user_roles')->insert([
         //     'Roles'=>"Job Seeker",
-
+        // ]);
         // User::factory(5)->create();
-        JobPost::factory(5)->create();
+        // JobPost::factory(5)->create();
     }
 }
