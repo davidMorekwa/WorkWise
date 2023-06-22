@@ -54,7 +54,13 @@ class RegisterController extends Controller
             // 'fname' => ['required', 'string', 'max:255'],
             // 'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            //password must contain at least one uppercase letter, one lowercase letter, and one digit character.
+            'password' => [
+                'required',
+                'min:8',
+                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
+                'confirmed'
+            ]
             // 'phone-number' =>['integer', 'max:20'],
         ]);
     }
