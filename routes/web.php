@@ -65,11 +65,6 @@ Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
         return view('jobseeker.viewprofile');
     })->name('jobSeekersProfile');
 
-    Route::get('/viewdata/{userId}', function ($id) {
-        $data = DB::table('jobseekers')->where('userId', $id)->first();
-        return view('jobseeker.viewprofile', ['data' => $data]);
-    })->name('jobSeekersProfileview');;
-
     Route::get('/viewprofile', [JobseekerController::class, 'fetchtest']);
 
 });
