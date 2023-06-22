@@ -28,53 +28,20 @@
         </a>
         <!-- SIDE MENU -->
         <div class="side-menu">
-            <a href="#" class="menu-link">
-                <ion-icon name="home-outline"></ion-icon> Home
+            <a href="{{ url('/myprofile') }}" class="menu-link">
+                <ion-icon name="home-outline"></ion-icon> Add Profile
             </a>
-            <a href="#" class="menu-link">
+            <a href="{{ url('/') }}" class="menu-link">
                 <ion-icon name="newspaper-outline"></ion-icon> Find jobs
             </a>
             <a href="#" class="menu-link">
                 <ion-icon name="bookmarks-outline"></ion-icon> Bookmarks
             </a>
-            {{-- <a href="#" class="menu-link">
-                <ion-icon name="mail-unread-outline"></ion-icon> Message
-            </a> --}}
-            <a href="{{ url('/home_profile') }}" class="menu-link">
-                <ion-icon name="settings-outline"></ion-icon> Settings
+
+            <a href="{{ url('/viewprofile') }}" class="menu-link">
+                <ion-icon name="settings-outline"></ion-icon> View Profile
             </a>
         </div>
-        <!-- AUTHENTICATION -->
-        {{-- <div class="authentication">
-            @if (Route::has('login'))
-                <div class="authentication-input">
-                    @auth
-                        <a href="{{ url('/home') }}" class="">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="">Register</a>
-                        @endif @endauth
-                    </div>
-                @endif
-            </div> --}}
-        <!-- PROFILE -->
-        {{-- <div class="authentication">
-            @if (Route::has('login'))
-                <div class="authentication-details">
-                    @auth
-                        <a href="{{ route('logout') }}" class="auth-tabs">Logout</a>
-                    @else
-                        <a href="{{ route('login') }}" class="auth-tabs">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="auth-tabs">Register</a>
-                        @endif
-                    @endauth
-                </div>
-        </div> --}}
-        {{-- @endif --}}
 
         <ul class="navbar-nav ms-auto" style="display:flex; align-items:center; padding:.8rem; flex-direction:column;">
             <!-- Authentication Links -->
@@ -98,10 +65,12 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
                         <a class="nav-item-mine" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
+
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
