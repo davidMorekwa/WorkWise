@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\JobPost;
+use App\Models\Recruiters;
 use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Database\Seeder;
@@ -32,7 +33,16 @@ class DatabaseSeeder extends Seeder
         // DB::table('user_roles')->insert([
         //     'Roles' => "Job Seeker",
         // ]);
-        User::factory(5)->create();
-        // JobPost::factory(5)->create();
+        // User::factory(5)->create();
+        // Recruiters::factory()->create([
+        //     'organisation_name'=>'WorkWise',
+        //     'location' => fake()->country(),
+        //     'about'=>fake()->paragraph(3),
+        //     'industry'=>'IT',
+        //     'website'=>'http:/localhost:8000',
+        //     'email'=>fake()->companyEmail(),
+        //     'userId'=>5
+        // ]);
+        JobPost::factory(5)->create();
     }
 }
