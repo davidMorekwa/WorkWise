@@ -132,7 +132,7 @@
         <!-- CARDS -->
         <div class="wrapper" id="wrapper">
             <!-- CARD 1 -->
-            <div class="card" id="cards">
+            {{-- <div class="card" id="cards">
                 <div class="card-left blue-bg">
                     <img src="assets/googleicon.svg" alt="" />
                 </div>
@@ -163,112 +163,46 @@
                         <p><b>$500</b> / Year</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <!-- CARD 2 -->
-            <div class="card" id="cards">
-                <div class="card-left blue-bg">
-                    <img src="assets/googleicon.svg" alt="" />
-                </div>
-                <div class="card-center">
-                    <h3>Google</h3>
-                    <p class="card-detail">Web Development, FrontEnd</p>
-                    <p class="card-location">
-                        <ion-icon name="location-outline"></ion-icon>
-                    </p>
-                    <div class="card-sub">
-                        <p class="card-sub-details">
-                            <ion-icon name="today-outline"></ion-icon>5 mins ago
-                        </p>
-                        <p class="card-sub-details">
-                            <ion-icon name="hourglass-outline"></ion-icon> Full-time
-                        </p>
-                        <p class="card-sub-details">
-                            <ion-icon name="hourglass-outline"></ion-icon>500 Applicants
-                        </p>
-                    </div>
-                </div>
-                <div class="card-right">
-                    <div class="card-tag">
-                        <h3>Division</h3>
-                        <a href="#">Data Analyst</a>
-                    </div>
-                    <div class="card-salary">
-                        <p><b>$500</b> / Year</p>
-                    </div>
 
-                </div>
-            </div>
+            {{-- TEST --}}
 
-            <!-- CARD 3 -->
-            <div class="card" id="cards">
-                <div class="card-left blue-bg">
-                    <img src="assets/googleicon.svg" alt="" />
-                </div>
-                <div class="card-center">
-                    <h3>Google</h3>
-                    <p class="card-detail">Web Development, FrontEnd</p>
-                    <p class="card-location">
-                        <ion-icon name="location-outline"></ion-icon>
-                    </p>
-                    <div class="card-sub">
-                        <p class="card-sub-details">
-                            <ion-icon name="today-outline"></ion-icon>5 mins ago
-                        </p>
-                        <p class="card-sub-details">
-                            <ion-icon name="hourglass-outline"></ion-icon> Full-time
-                        </p>
-                        <p class="card-sub-details">
-                            <ion-icon name="hourglass-outline"></ion-icon>500 Applicants
-                        </p>
-                    </div>
-                </div>
-                <div class="card-right">
-                    <div class="card-tag">
-                        <h3>Division</h3>
-                        <a href="#">Data Analyst</a>
-                    </div>
-                    <div class="card-salary">
-                        <p><b>$500</b> / Year</p>
-                    </div>
 
-                </div>
-            </div>
-
-            <!-- CARD 4 -->
-            <div class="card" id="cards">
-                <div class="card-left blue-bg">
-                    <img src="assets/googleicon.svg" alt="" />
-                </div>
-                <div class="card-center">
-                    <h3>Google</h3>
-                    <p class="card-detail">Web Development, FrontEnd</p>
-                    <p class="card-location">
-                        <ion-icon name="location-outline"></ion-icon>
-                    </p>
-                    <div class="card-sub">
-                        <p class="card-sub-details">
-                            <ion-icon name="today-outline"></ion-icon>5 mins ago
+            <fieldset>
+                <div class="card" id="cards">
+                    <div class="card-left blue-bg">
+                        <img src="assets/googleicon.svg" alt="" />
+                    </div>
+                    <div class="card-center">
+                        <h3>Google</h3>
+                        <p class="card-detail">Web Development, FrontEnd</p>
+                        <p class="card-location">
+                            <ion-icon name="location-outline"></ion-icon>
                         </p>
-                        <p class="card-sub-details">
-                            <ion-icon name="hourglass-outline"></ion-icon> Full-time
-                        </p>
-                        <p class="card-sub-details">
-                            <ion-icon name="hourglass-outline"></ion-icon>500 Applicants
-                        </p>
+                        <div class="card-sub">
+                            <p class="card-sub-details">
+                                <ion-icon name="today-outline"></ion-icon>5 mins ago
+                            </p>
+                            <p class="card-sub-details">
+                                <ion-icon name="hourglass-outline"></ion-icon> Full-time
+                            </p>
+                            <p class="card-sub-details">
+                                <ion-icon name="hourglass-outline"></ion-icon>500 Applicants
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-right">
+                        <div class="card-tag">
+                            <h3>Division</h3>
+                            <a href="#">Data Analyst</a>
+                        </div>
+                        <div class="card-salary">
+                            <p><b>$500</b> / Year</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card-right">
-                    <div class="card-tag">
-                        <h3>Division</h3>
-                        <a href="#">Data Analyst</a>
-                    </div>
-                    <div class="card-salary">
-                        <p><b>$500</b> / Year</p>
-                    </div>
-
-                </div>
-            </div>
+            </fieldset>
         </div>
     </div>
 
