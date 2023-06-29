@@ -22,9 +22,9 @@ class JobPostFactory extends Factory
             'job_title' => fake()->jobTitle(),
             'position_title' => fake()->word(),
             'overview'=> fake()->paragraph(),
-            'responsibilities'=>fake()->paragraph(4),
-            'qualifications'=>fake()->paragraph(3),
-            'organisation'=>3,
+            'responsibilities'=>fake()->paragraph(2),
+            'qualifications'=>fake()->paragraph(2),
+            'organisation'=>1,
             'status'=>$status,
             'type'=>$type
         ];
