@@ -141,7 +141,7 @@
                             <h3>Job Type: {{ $organization->type }}</h3>
                         </div>
                         <div>
-                            <p>OVERVIEW: <br />{{ $organization->overview }}</p>
+                            <p>OVERVIEW: <br />{!! $organization->overview !!}</p>
                         </div>
                         <button class="btn-apply">Apply Now</button>
 
