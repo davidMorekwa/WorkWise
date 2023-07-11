@@ -76,13 +76,23 @@ class RecruitersController extends Controller
             'position_title' => $request->position_title,
             'overview' => $request->job_overview,
             'responsibilities' => $request->responsibilities,
-            'type' => $request->job_type,
+            'type' => $request->job_type,//internship/ fulltime
             'qualifications' => $request->qualifications,
             'status' => false,
             'organisation' => $organisation->id
         ]);
         return redirect()->route('RecruitersHomePage.show');
     }
+    // View job post
+
+    public function viewJobPost()
+    {
+        $organizations = JobPost::all();
+
+        return view('index', compact('organizations'));
+    }
+
+
     // Show recent job posts
     public function recentJobPosts()
     {
