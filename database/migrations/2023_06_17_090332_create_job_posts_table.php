@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('overview');
             $table->string('responsibilities');
             $table->string('qualifications');
+            // TODO: Salary
             $table->foreignId('organisation')->constrained('recruiters')->onDelete('cascade');
             $table->boolean('status');
             $table->timestamps();
