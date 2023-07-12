@@ -134,7 +134,7 @@
                             <h3>Job Type: {{ $organization->type }}</h3>
                         </div>
                         <div>
-                            <p>OVERVIEW: <br />{{ $organization->overview }}</p>
+                            <p>OVERVIEW: <br />{!! $organization->overview !!}</p>
                         </div>
                         @guest
                             <a href="{{ route('login') }}" class="btn-apply">Apply Now</a>

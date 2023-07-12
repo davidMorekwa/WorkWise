@@ -6,6 +6,9 @@ use App\Http\Controllers\RecruitersController;
 use App\Http\Controllers\JobseekerController;
 use App\Http\Controllers\HomeController;
 
+use Phpml\FeatureExtraction\TfIdfTransformer;
+use Phpml\Math\Distance\Cosine;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,7 +53,7 @@ Route::middleware(['auth', 'role:2', 'verified'])->group(function () {
     Route::get('/recentPosts', [RecruitersController::class, 'recentJobPosts'])->name('jobPosts.show');
     // Close job post
     Route::post('/closeJobPost', [RecruitersController::class, 'closeJobPost'])->name('JobPost.close');
-});
+ });
 
 // JOBSEEKER ROUTES
 Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
