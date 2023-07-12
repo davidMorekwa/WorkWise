@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fab2786fd35a493d6152180848b5024d",
+    "content-hash": "44a8c180c71c62dc55fea1e6821b579c",
     "packages": [
+        {
+            "name": "algenza/cosine-similarity",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/algenza/cosine-similarity.git",
+                "reference": "9ea9d8f90d3a4c0cfef739f9f17ef1c6880473db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/algenza/cosine-similarity/zipball/9ea9d8f90d3a4c0cfef739f9f17ef1c6880473db",
+                "reference": "9ea9d8f90d3a4c0cfef739f9f17ef1c6880473db",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Algenza\\Cosinesimilarity\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Billy Renyut",
+                    "email": "milhanol068@gmail.com"
+                }
+            ],
+            "description": "Cosine similarity",
+            "support": {
+                "issues": "https://github.com/algenza/cosine-similarity/issues",
+                "source": "https://github.com/algenza/cosine-similarity/tree/master"
+            },
+            "time": "2016-09-22T09:15:35+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",
