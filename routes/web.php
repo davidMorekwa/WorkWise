@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecruitersController;
 use App\Http\Controllers\JobseekerController;
@@ -62,4 +63,7 @@ Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
     Route::post('/myprofile', [JobseekerController::class, 'createProfile'])->name('my_profile.create');
     // view profile of the created jobseeker profile
     Route::get('/viewprofile', [JobseekerController::class, 'viewProfile'])->name('view_profile.view');
+    // apply for job
+    Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
+
 });

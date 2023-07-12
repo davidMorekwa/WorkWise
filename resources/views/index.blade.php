@@ -28,27 +28,20 @@
         </a>
         <!-- SIDE MENU -->
         <div class="side-menu">
-            @guest
-                <a href="{{ url('/') }}" class="menu-link">
-                    <ion-icon name="newspaper-outline"></ion-icon> Find jobs
-                </a>
-                <a href="#" class="menu-link">
-                    <ion-icon name="bookmarks-outline"></ion-icon> Bookmarks
-                </a>
-            @else
-                <a href="{{ url('/myprofile') }}" class="menu-link">
-                    <ion-icon name="home-outline"></ion-icon> Add Profile
-                </a>
-                <a href="{{ url('/viewprofile') }}" class="menu-link">
-                    <ion-icon name="settings-outline"></ion-icon> View Profile
-                </a>
-                <a href="{{ url('/') }}" class="menu-link">
-                    <ion-icon name="newspaper-outline"></ion-icon> Find jobs
-                </a>
-                <a href="#" class="menu-link">
-                    <ion-icon name="bookmarks-outline"></ion-icon> Bookmarks
-                </a>
-            @endguest
+
+            <a href="{{ url('/') }}" class="menu-link">
+                <ion-icon name="newspaper-outline"></ion-icon> Find jobs
+            </a>
+
+            <a href="#" class="menu-link">
+                <ion-icon name="bookmarks-outline"></ion-icon> Bookmarks
+            </a>
+
+            <a href="{{ url('/myprofile') }}" class="menu-link">
+                <ion-icon name="settings-outline"></ion-icon> View Profile
+            </a>
+
+
         </div>
 
         <ul class="navbar-nav ms-auto" style="display:flex; align-items:center; padding:.8rem; flex-direction:column;">
@@ -143,50 +136,28 @@
                         <div>
                             <p>OVERVIEW: <br />{!! $organization->overview !!}</p>
                         </div>
-                        <button class="btn-apply">Apply Now</button>
+                        @guest
+                            <a href="{{ route('login') }}" class="btn-apply">Apply Now</a>
+                        @else
+                            <form action="{{ route('applications.store') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="organization_id" value="{{ auth()->user()->id }}">
+                                {{-- <input type="hidden" name="email" id="email" value="{{ auth()->user()->email }}"
+                                    required><br /> --}}
+                                <input type="file" name="resume" id="resume" value="{{ auth()->user()->cv }}"
+                                    required>
+                                <button type="submit"
+                                    style="background-color: #556973;color:aliceblue; border: none; padding: 10px 20px; border-radius: 20px; font-size: 16px; cursor: pointer;">Apply</button>
+                            </form>
 
-                    </div>
+                        </div>
+                    @endguest
                 </fieldset>
             @endforeach
         </div>
     </div>
-
-    {{-- <!-- CARD DETAILS -->
-    <div class="detail" id="detail">
-        <ion-icon class="close-detail" id="close-detail" name="close-circle-outline"></ion-icon>
-
-        <!-- DETAIL HEADER -->
-        <div class="detail-header">
-            <img src="assets/googleicon.svg" alt="google" />
-            <h2>Google</h2>
-            <p>Data Science</p>
-        </div>
-        <hr class="divider" />
-
-        <!-- DETAIL DESCRIPTION -->
-        <div class="detail-description">
-            <div class="about">
-                <h2>About Company</h2>
-            </div>
-            <hr class="divider" />
-            <!-- QUALIFICATION -->
-            <div class="qualification">
-                <h4>Qualification</h4>
-                <ul class="qualification-list">
-                    <li>Lorem ipsum dolor sit amet consectetur.</li>
-                    <li>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Voluptatem, placeat.
-                    </li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-                </ul>
-            </div>
-            <hr class="divider" />
-        </div>
-        <div class="detail-btn">
-            <button class="btn-apply">Apply Now</button>
-        </div>
-    </div> --}}
+    </div>
 
     <!-- MAIN JS -->
     <script src="index.js"></script>

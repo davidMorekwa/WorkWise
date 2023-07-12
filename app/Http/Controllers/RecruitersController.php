@@ -49,7 +49,8 @@ class RecruitersController extends Controller
         return view('recruiters.updateProfile')->with('profile', $profile_data);
     }
     // Update recrutier profile
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request)
+    {
         $profile_data = Recruiters::where('userId', Auth::user()->id)->first();
         $profile_data->organisation_name = $request->organisation_name;
         $profile_data->website = $request->website;
@@ -85,14 +86,11 @@ class RecruitersController extends Controller
         return redirect()->route('RecruitersHomePage.show');
     }
     // View job post
-
     public function viewJobPost()
     {
         $organizations = JobPost::all();
-
         return view('index', compact('organizations'));
     }
-
 
     // Show recent job posts
     public function recentJobPosts()
