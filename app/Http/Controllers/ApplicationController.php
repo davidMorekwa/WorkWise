@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Application;
+use Illuminate\Support\Facades\Storage;
 
 class ApplicationController extends Controller
 {
@@ -13,20 +14,19 @@ class ApplicationController extends Controller
         //     'resume' => 'required|file|mimes:pdf|max:2048',
         // ]);
 
-        $resumePath = $request->file('resume')->store('resumes');
-
-        // $application = Application::create([
-        //     'resume' => $resumePath,
-        // ]);
+        $resumePath = $request->file('resume')->store('resumes', 'public');
+        echo $resumePath;
 
 
         // Perform any additional actions or notifications as needed
 
         // return redirect()->back()->with('success', 'Application submitted successfully.');
 
-        return Application::create([
+        Application::create([
             'resume' => $resumePath,
         ]);
+        
+        return redirect()->back()->with('success', 'Application submitted successfully.');
     }
 
     // protected function create(array $data)
