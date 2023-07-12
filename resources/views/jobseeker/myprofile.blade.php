@@ -107,9 +107,9 @@
                             </div>
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Update Profile') }}
-                                    </button>
+                                    <a href="/" class="btn btn-primary">
+                                        {{ __('Home') }}
+                                    </a>
                                 </div>
                             </div>
                         </form>
