@@ -22,7 +22,6 @@
     .nav-links-container {
         display: flex;
         flex-direction: column;
-        align-items: center;
         margin-top: 12px;
     }
 
@@ -36,7 +35,7 @@
         width: 100%;
         color: rgb(98, 98, 98);
         border-radius: 10px;
-        text-align: center;
+        text-align: left;
         padding-top: 5px;
     }
     .nav-links-container .nav-link:not(#job-management){
