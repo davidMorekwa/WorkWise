@@ -19,10 +19,11 @@ use Phpml\Math\Distance\Cosine;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('jobSeekersHome');
+// Route::get('/', function () {
+//     return view('index');
+// })->name('jobSeekersHome');
 
+Route::get('/', [RecruitersController::class, 'viewJobPost']);
 
 Auth::routes([
     'verify' => true
@@ -61,5 +62,4 @@ Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
     Route::post('/myprofile', [JobseekerController::class, 'createProfile'])->name('my_profile.create');
     // view profile of the created jobseeker profile
     Route::get('/viewprofile', [JobseekerController::class, 'viewProfile'])->name('view_profile.view');
-
 });

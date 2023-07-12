@@ -71,18 +71,29 @@ class RecruitersController extends Controller
     {
         // dd($request);
         $organisation = Recruiters::where('userId', Auth::user()->id)->first('id');
+        // return $request;
         JobPost::create([
             'job_title' => $request->job_title,
             'position_title' => $request->position_title,
-            'overview' => $request->job_overview,
-            'responsibilities' => $request->responsibilities,
-            'type' => $request->job_type,
-            'qualifications' => $request->qualifications,
+            'overview' => $request->txt_job_overview,
+            'responsibilities' => $request->txt_responsibilities,
+            'type' => $request->job_type,//internship/ fulltime
+            'qualifications' => $request->txt_qualifications,
             'status' => false,
             'organisation' => $organisation->id
         ]);
         return redirect()->route('RecruitersHomePage.show');
     }
+    // View job post
+
+    public function viewJobPost()
+    {
+        $organizations = JobPost::all();
+
+        return view('index', compact('organizations'));
+    }
+
+
     // Show recent job posts
     public function recentJobPosts()
     {
