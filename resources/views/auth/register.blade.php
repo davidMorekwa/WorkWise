@@ -28,7 +28,7 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
-                            {{-- first name
+                            {{-- first name --}}
                             <div class="row mb-3">
                                 <label for="fname" class="col-md-4 col-form-label text-md-end"
                                     style="font-size: .9rem; font-weight:550;">{{ __('First Name') }}</label>
@@ -46,8 +46,8 @@
                                 </div>
                             </div>
 
-                            {{-- last name --}}
-                            {{-- <div class="row mb-3">
+                            {{-- last name  --}}
+                            <div class="row mb-3">
                                 <label for="lname" class="col-md-4 col-form-label text-md-end"
                                     style="font-size: .9rem; font-weight:550;">{{ __('Last Name') }}</label>
 
@@ -62,7 +62,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div> --}}
+                            </div>
 
                             {{-- email --}}
                             <div class="row mb-3">
@@ -94,6 +94,31 @@
                                 </select>
                             </div>
 
+                
+                            {{-- phone number --}}
+                            <div class="row mb-3">
+                                <label for="phone_number"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Phone Number') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="phone_number" type="tel"
+                                        class="form-control @error('phone_number') is-invalid @enderror"
+                                        name="phone_number">
+
+                                    @error('phone_number')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    <script>
+                                        const phoneInputField = document.querySelector("#phone_number");
+                                        const phoneInput = window.intlTelInput(phoneInputField, {
+                                            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+
                             {{-- password --}}
                             <div class="row mb-3">
                                 <label for="password" class="col-md-4 col-form-label text-md-end"
@@ -102,14 +127,13 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password" style="font-size: .9rem"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-
-                                        required autocomplete="new-password"
-                                        placeholder="Must be 8 characters">
+                                        required autocomplete="new-password" placeholder="Must be 8 characters">
 
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong style="text-transform: capitalize">password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 digit character.</strong>
+                                            <strong style="text-transform: capitalize">password must contain at least 1
+                                                uppercase letter, 1 lowercase letter, and 1 digit character.</strong>
                                         </span>
                                     @enderror
                                 </div>
@@ -123,7 +147,6 @@
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
                                         style="font-size: .9rem" name="password_confirmation" required
-
                                         placeholder="Must be 8 characters" utocomplete="new-password">
 
                                 </div>
@@ -132,7 +155,7 @@
                             {{-- buttons --}}
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    
+
                                     <button type="submit" class="auth-button">
                                         {{ __('Register') }}
                                     </button>
