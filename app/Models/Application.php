@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model
 {
-    protected $fillable = ['resume'];
+    protected $fillable = [
+        'resume',
+        'job_id'
+    ];
     use HasFactory;
     // public function organization()
     // {

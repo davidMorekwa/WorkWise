@@ -53,6 +53,9 @@ Route::middleware(['auth', 'role:2', 'verified'])->group(function () {
     Route::get('/recentPosts', [RecruitersController::class, 'recentJobPosts'])->name('jobPosts.show');
     // Close job post
     Route::post('/closeJobPost', [RecruitersController::class, 'closeJobPost'])->name('JobPost.close');
+    // Show review resumes page
+    Route::get('/reviewResumes/openJobs', [RecruitersController::class, 'showReviewResumes'])->name('ReviewResumes.show');
+    Route::get('/reviewResumes/review/{jobId}', [RecruitersController::class, 'tempReviewResume']);
  });
 
 // JOBSEEKER ROUTES
