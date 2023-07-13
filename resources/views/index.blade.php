@@ -127,10 +127,10 @@
             @foreach ($organizations as $organization)
                 <fieldset>
                     <div class="card" id="cards">
-                        <div>
+                        <div style="font-size: 1.6rem;font-weight: 600; color: #894c75;">
                             <h1>Job Title: {{ $organization->job_title }}</h1>
-                        </div><br />
-                        <div>
+                        </div>
+                        <div style="font-style: italic">
                             <h3>Job Type: {{ $organization->type }}</h3>
                         </div>
                         <div>
