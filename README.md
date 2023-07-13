@@ -1,66 +1,102 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Workwise
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Workwise is a job board website built using the Laravel framework. It provides a platform for job seekers to search and apply for jobs, as well as for employers to post job listings and find suitable candidates. This README file provides an overview of the project, its features, and instructions for setting up and running the application.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. User Registration and Authentication:
+   - Job seekers and employers can register and create their accounts.
+   - Users can log in securely using their credentials.
+   - Password reset functionality is available in case users forget their passwords.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+2. Job Listings:
+   - Employers can post job listings with detailed information such as job title, description, requirements, and company information.
+   - Job seekers can browse and search for job listings based on various criteria such as job title, location, and category.
+   - Pagination is implemented to display a limited number of job listings per page.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3. Job Applications:
+   - Job seekers can apply for jobs by submitting their resumes and cover letters.
+   - Employers can view and manage job applications received for their job listings.
 
-## Learning Laravel
+4. User Profiles:
+   - Users can create and manage their profiles with personal information and CVs.
+   - Employers can view profiles of job applicants CVs once they make applications.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+5. Email Notifications:
+   - Users receive email notifications for account registration, password reset, and job application status updates.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Prerequisites
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Before running the Workwise Job Board application, make sure you have the following installed:
 
-## Laravel Sponsors
+- PHP (>= 7.4)
+- Composer
+- MySQL (>= 5.7)
+- Node.js (>= 12)
+- NPM (>= 6)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Getting Started
 
-### Premium Partners
+To get started with Workwise, follow these steps:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/workwise.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd workwise
+```
+
+3. Install PHP dependencies:
+
+```bash
+composer install
+```
+
+4. Install JavaScript dependencies:
+
+```bash
+npm install && npm run dev
+```
+
+5. Create a copy of the `.env.example` file and rename it to `.env`. Update the database connection details in the `.env` file with your MySQL credentials.
+
+6. Generate a new application key:
+
+```bash
+php artisan key:generate
+```
+
+7. Run database migrations and seed the database:
+
+```bash
+php artisan migrate --seed
+```
+
+8. Start the development server:
+
+```bash
+php artisan serve
+```
+
+9. Access the application by visiting `http://localhost:8000` in your web browser.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Contributions to the Workwise Job Board project are always welcome. If you find a bug or have suggestions for new features, please open an issue or submit a pull request.
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Before contributing, please make sure to read and adhere to the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Workwise Job Board project is open-source software licensed under the [MIT license](LICENSE).
+
+## Contact
+
+If you have any questions or inquiries, feel free to contact the project maintainer at [mwandajosiah@gmail.com && d.nyamongo11@gmail.com](mailto:your-email@example.com).
+
+Thank you for using Workwise!
