@@ -201,7 +201,7 @@
         </div>
     </div>
 @endsection
-@php
+{{-- @php
     $txt = $Profile->about;
-    computeTfIdf($txt);
-@endphp
+    // computeTfIdf($txt);
+@endphp --}}

@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Console\Commands\ExportDataCommand;
+use App\Http\Controllers\engine;
+use App\Models\Application;
 use App\Models\JobPost;
 use App\Models\Recruiters;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 class RecruitersController extends Controller
@@ -88,7 +92,7 @@ class RecruitersController extends Controller
     // View job post
     public function viewJobPost()
     {
-        $organizations = JobPost::all();
+        $organizations = JobPost::where('status', 1)->get();
         return view('index', compact('organizations'));
     }
 
@@ -108,5 +112,17 @@ class RecruitersController extends Controller
         $post->status = 0;
         $post->save();
         return redirect()->route('jobPosts.show');
+    }
+    // Show reviewResumes page
+    public function showReviewResumes(){
+        $organisation = Recruiters::where('userId', Auth::user()->id)->first();
+        $jobs = JobPost::where('organisation', $organisation->id)->where('status', 1)->get();
+        return view('recruiters.reviewResumes')->with('jobs', $jobs);
+    }
+    function tempReviewResume($jobId){
+        Artisan::call('app:export-data-command',['jobId'=>$jobId]);
+        $resumes = Application::where('job_id', $jobId)->get();
+        $en = new engine;
+        $en->computeTfIdf($resumes[0]->resume);
     }
 }
