@@ -15,8 +15,6 @@ class ApplicationController extends Controller
         // ]);
 
         $resumePath = $request->file('resume')->store('resumes', 'public');
-        echo $resumePath;
-
 
         // Perform any additional actions or notifications as needed
 
@@ -24,6 +22,7 @@ class ApplicationController extends Controller
 
         Application::create([
             'resume' => $resumePath,
+            'job_id' => $request->job_id
         ]);
         
         return redirect()->back()->with('success', 'Application submitted successfully.');

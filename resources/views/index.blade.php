@@ -143,8 +143,8 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="organization_id" value="{{ auth()->user()->id }}">
-                                {{-- <input type="hidden" name="email" id="email" value="{{ auth()->user()->email }}"
-                                    required><br /> --}}
+                                <input type="text" hidden name="job_id" id="job_id" value="{{ $organization->id }}"
+                                    required><br />
                                 <input type="file" name="resume" id="resume" value="{{ auth()->user()->cv }}"
                                     required>
                                 <button type="submit"

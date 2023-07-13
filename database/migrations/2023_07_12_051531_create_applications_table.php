@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
+            $table->string('resume');
+            $table->foreignId('job_id')->constrained('job_posts')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
