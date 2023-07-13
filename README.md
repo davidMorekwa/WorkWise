@@ -97,6 +97,6 @@ The Workwise Job Board project is open-source software licensed under the [MIT l
 
 ## Contact
 
-If you have any questions or inquiries, feel free to contact the project maintainer at [your-email@example.com](mailto:your-email@example.com).
+If you have any questions or inquiries, feel free to contact the project maintainer at [mwandajosiah@gmail.com && d.nyamongo11@gmail.com](mailto:your-email@example.com).
 
 Thank you for using Workwise!
