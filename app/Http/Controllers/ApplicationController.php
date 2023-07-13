@@ -22,22 +22,11 @@ class ApplicationController extends Controller
 
         Application::create([
             'resume' => $resumePath,
-            'job_id' => $request->job_id
+            'job_id' => $request->job_id,
+            'userId' => Auth::user()->id,
         ]);
         
         return redirect()->back()->with('success', 'Application submitted successfully.');
     }
 
-    // protected function create(array $data)
-    // {
-    //     //dd($data);
-    //     return Application::create([
-    //         'fname' => $data['fname'],
-    //         'lname' => $data['lname'],
-    //         'email' => $data['email'],
-    //         'role_id'=>$data['role'],
-    //         'phone_number'=>$data['phone_number'],
-    //         'password' => Hash::make($data['password']),
-    //     ]);
-    // }
 }

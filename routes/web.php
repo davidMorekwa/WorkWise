@@ -30,6 +30,8 @@ Auth::routes([
     'verify' => true
 ]);
 
+// filter jobs
+Route::get('/filterjobs', [JobseekerController::class, 'filterJobs'])->name('filterjobs.index');
 
 // RECRUITERS ROUTES
 Route::middleware(['auth', 'role:2', 'verified'])->group(function () {
@@ -56,7 +58,7 @@ Route::middleware(['auth', 'role:2', 'verified'])->group(function () {
     // Show review resumes page
     Route::get('/reviewResumes/openJobs', [RecruitersController::class, 'showReviewResumes'])->name('ReviewResumes.show');
     Route::get('/reviewResumes/review/{jobId}', [RecruitersController::class, 'tempReviewResume']);
- });
+});
 
 // JOBSEEKER ROUTES
 Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
@@ -68,5 +70,4 @@ Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
     Route::get('/viewprofile', [JobseekerController::class, 'viewProfile'])->name('view_profile.view');
     // apply for job
     Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
-
 });
