@@ -7,38 +7,31 @@ use App\Models\jobseekers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\SourceModel;
+use App\Models\DestinationModel;
 
 class JobseekerController extends Controller
 {
-    public function myprofile()
+    // view applied jobs
+    public function viewAppliedJobs()
     {
-        return view('jobseeker.myprofile');
-    }
+        $sourceData = SourceModel::find(); // Fetch the data from the source table using the ID
 
-
-    public function createProfile(Request $request)
-    {
-        // dd($request);
-        jobseekers::create([
-            'fname' => $request->fname,
-            'email' => $request->email,
-            'lname' => $request->lname,
-            'phone_number' => $request->phone_number,
-            'self_description' => $request->self_description,
-            'cv' => $request->cv,
-            'userId' => Auth::user()->id,
+        // Create a new entry in the destination table and associate it with the source data
+        $destinationData = new DestinationModel([
+            'job_title' => $sourceData->job_title,
+            'type' => $sourceData->type,
+            // Include other columns as needed
         ]);
-
-        return view('index');
-
+        $destinationData->sourceModel()->associate($sourceData); // Associate the source model using the ID
+        $destinationData->save();
+        $data = DB::table('applications')->where('userId', Auth::user()->id);
+        return view('jobseeker.appliedjobs')->with('applied', $data);
     }
 
-    public function showProfile()
-    {
-        $profile_data = jobseekers::where('userId', Auth::user()->id)->first();
-        return view('jobseeker.viewprofile')->with('Profile', $profile_data);
-    }
 
+
+    // view profile
     public function viewProfile()
     {
         $data = DB::table('jobseekers')->where('userId', Auth::user()->id)->first();
@@ -48,26 +41,10 @@ class JobseekerController extends Controller
     }
 
 
+    // filter jobs
     public function filterJobs(Request $request)
     {
         $query = JobPost::query();
-
-        // Apply filters
-        // if ($request->has('job_title')) {
-        //     $query->where('job_title', $request->input('job_title'));
-        // }
-
-        // if ($request->has('position_title')) {
-        //     $query->where('position_title', '<=', $request->input('position_title'));
-        // }
-
-        // if ($request->has('organisation')) {
-        //     $query->where('organisation', '<=', $request->input('organisation'));
-        // }
-
-        // if ($request->has('type')) {
-        //     $query->where('type', '<=', $request->input('type'));
-        // }
 
         // Apply filters
         if ($request->has('filters')) {
