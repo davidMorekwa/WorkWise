@@ -10,6 +10,7 @@ use App\Models\Recruiters;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RecruitersController extends Controller
 {
@@ -122,7 +123,14 @@ class RecruitersController extends Controller
     function tempReviewResume($jobId){
         Artisan::call('app:export-data-command',['jobId'=>$jobId]);
         $resumes = Application::where('job_id', $jobId)->get();
-        $en = new engine;
-        $en->computeTfIdf($resumes[0]->resume);
+        $job = JobPost::where('id', $jobId)->first('job_title');
+        // echo $job;
+        // echo $resumes;
+        return view('recruiters.resumeView')->with('resumes', $resumes)->with('job_title', $job);
+    }
+    function downloadResumes($id){
+        $appl = Application::findorFail($id);
+        $resumePath = $appl->resume;
+        // return Storage::download('/Users/dave/WorkWise/WorkWise/storage/app/public/'.$resumePath);
     }
 }

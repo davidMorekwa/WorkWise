@@ -6,6 +6,7 @@ use App\Http\Controllers\RecruitersController;
 use App\Http\Controllers\JobseekerController;
 use App\Http\Controllers\HomeController;
 
+use Illuminate\Support\Facades\Storage;
 use Phpml\FeatureExtraction\TfIdfTransformer;
 use Phpml\Math\Distance\Cosine;
 
@@ -58,6 +59,7 @@ Route::middleware(['auth', 'role:2', 'verified'])->group(function () {
     // Show review resumes page
     Route::get('/reviewResumes/openJobs', [RecruitersController::class, 'showReviewResumes'])->name('ReviewResumes.show');
     Route::get('/reviewResumes/review/{jobId}', [RecruitersController::class, 'tempReviewResume']);
+    Route::get('/reviewResumes/download/{id}', [RecruitersController::class, 'downloadResumes'])->name('Resumes.Download');
 });
 
 // JOBSEEKER ROUTES
