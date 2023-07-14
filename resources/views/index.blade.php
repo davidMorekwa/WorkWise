@@ -28,16 +28,21 @@
         </a>
         <!-- SIDE MENU -->
         <div class="side-menu">
+            @guest
+                <a href="{{ route('login') }}" class="menu-link" style="font-size: 1rem">
+                    <ion-icon name="newspaper-outline"></ion-icon> View Applied Jobs
+                </a>
+            @else
+                <a href="{{ url('/ViewAppliedJobs') }}" class="menu-link" style="font-size: 1rem">
+                    <ion-icon name="newspaper-outline"></ion-icon> View Applied Jobs
+                </a>
+            @endguest
 
-            <a href="{{ url('/') }}" class="menu-link">
-                <ion-icon name="newspaper-outline"></ion-icon> Find jobs
-            </a>
-
-            <a href="#" class="menu-link">
+            <a href="#" class="menu-link" style="font-size: 1rem">
                 <ion-icon name="bookmarks-outline"></ion-icon> Bookmarks
             </a>
 
-            <a href="{{ url('/myprofile') }}" class="menu-link">
+            <a href="{{ url('/viewprofile') }}" class="menu-link" style="font-size: 1rem">
                 <ion-icon name="settings-outline"></ion-icon> View Profile
             </a>
 
@@ -88,73 +93,66 @@
         <!-- MAIN HEADER -->
         <div class="main-header">
             <ion-icon class="menu-bar" id="menu-bar" name="menu-outline"></ion-icon>
-            <div class="search">
-                <input type="text" placeholder="Search for a Job..." />
-                <button class="btn-search" title="search">
-                    <ion-icon name="search-outline"></ion-icon>
-                </button>
-            </div>
-        </div>
-
-        <!-- FILTER -->
-        <div class="filter-wrapper">
-            <p class="filter-title">Recommendation</p>
-            <div class="filter">
-                <button class="btn-filter">Data Analyst</button>
-                <button class="btn-filter">FrontEnd Development</button>
-                <button class="btn-filter">BackEnd Development</button>
-                <button class="btn-filter">Fullstack Development</button>
-                <button class="btn-filter">Fullstack Development</button>
-            </div>
+            <form action="{{ route('filterjobs.index') }}" method="GET" style="display: flex">
+                <input type="text" id="filters" name="filters"
+                    placeholder="BY: Job title, Job type, Organization, position title"
+                    style="display: flex; align-items: center; padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 500px; margin-right: 5px; text-align:center;">
+                <button type="submit"
+                    style="padding: 8px 12px; background-color: #894c75; color: #fff; border: none; border-radius: 4px;
+                cursor: pointer;">Filter</button>
+            </form>
         </div>
 
         <!-- SORT -->
         <div class="sort">
-            <p class="sort-title">sort</p>
             <div class="sort-list">
-                <select name="sort-list" id="sort-list" title="sort-list">
-                    <option value="" class="sort-list-item">All</option>
-                    <option value="" class="sort-list-item">Newest Post</option>
-                    <option value="" class="sort-list-item">Oldest Post</option>
-                    <option value="" class="sort-list-item">Most Relevant</option>
-                    <option value="" class="sort-list-item">Highest Paying</option>
-                </select>
+                {{-- <form action="{{ route('filterjobs.index') }}" method="GET">  
+                    <input type="text" id="filters" name="filters">
+                    <button type="submit">Filter</button>
+                </form> --}}
             </div>
         </div>
 
         <!-- CARDS -->
         <div class="wrapper" id="wrapper">
-            @foreach ($organizations as $organization)
-                <fieldset>
-                    <div class="card" id="cards">
-                        <div style="font-size: 1.6rem;font-weight: 600; color: #894c75;">
-                            <h1>Job Title: {{ $organization->job_title }}</h1>
-                        </div>
-                        <div style="font-style: italic">
-                            <h3>Job Type: {{ $organization->type }}</h3>
-                        </div>
-                        <div>
-                            <p>OVERVIEW: <br />{!! $organization->overview !!}</p>
-                        </div>
-                        @guest
-                            <a href="{{ route('login') }}" class="btn-apply">Apply Now</a>
-                        @else
-                            <form action="{{ route('applications.store') }}" method="POST"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <input type="hidden" name="organization_id" value="{{ auth()->user()->id }}">
-                                <input type="text" hidden name="job_id" id="job_id" value="{{ $organization->id }}"
-                                    required><br />
-                                <input type="file" name="resume" id="resume" value="{{ auth()->user()->cv }}"
-                                    required>
-                                <button type="submit"
-                                    style="background-color: #556973;color:aliceblue; border: none; padding: 10px 20px; border-radius: 20px; font-size: 16px; cursor: pointer;">Apply</button>
-                            </form>
+            @if ($organizations->isEmpty())
+                <h2 style="text-align:center; padding-top:4rem; font-size:1.8rem;">There are no Job postings made yet.
+                </h2>
+            @else
+                @foreach ($organizations as $organization)
+                    <fieldset>
+                        <div class="card" id="cards">
+                            <div style="font-size: 1.6rem;font-weight: 600; color: #894c75;">
+                                <h1>Job Title: {{ $organization->job_title }}</h1>
+                            </div>
+                            <div style="font-style: italic">
+                                <h3>Job Type: {{ $organization->type }}</h3>
+                            </div>
+                            <div>
+                                <p>OVERVIEW: <br />{!! $organization->overview !!}</p>
+                            </div>
+                            @guest
+                                <a href="{{ route('login') }}" class="btn-apply">Apply Now</a>
+                            @else
+                                <form action="{{ route('applications.store') }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="organization_id" value="{{ $organization->id }}">
+                                    <input type="text" hidden name="job_id" id="job_id"
+                                        value="{{ $organization->id }}" required><br />
+                                    <input type="file" name="resume" id="resume"
+                                        value="{{ auth()->user()->cv }}" required>
+                                    <button type="submit"
+                                        style="background-color: #556973;color:aliceblue; border: none; padding: 10px 20px; border-radius: 20px; font-size: 16px; cursor: pointer;">Apply</button>
+                                </form>
 
-                        </div>
-                    @endguest
-                </fieldset>
-            @endforeach
+                            </div>
+                        @endguest
+                    </fieldset>
+                @endforeach
+            @endif
+
         </div>
     </div>
     </div>
