@@ -18,4 +18,5 @@ class JobPost extends Model
         'status',
         'type'
     ];
+    protected $dates = ['deleted_at'];
 }

@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('resume');
             $table->foreignId('job_id')->constrained('job_posts')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
