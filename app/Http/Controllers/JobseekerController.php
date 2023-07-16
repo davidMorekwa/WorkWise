@@ -33,8 +33,8 @@ class JobseekerController extends Controller
     // Show open job posts
     public function viewJobPost()
     {
-        $job_posts = JobPost::where('status', 1)->paginate(6);
-        return view('index', compact('job_posts'));
+        $organizations = JobPost::where('status', 1)->paginate(6);
+        return view('index', compact('organizations'));
     }
 
     // Show a particular job post

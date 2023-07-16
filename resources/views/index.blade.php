@@ -115,26 +115,26 @@
 
         <!-- CARDS -->
         <div class="wrapper" id="wrapper">
-            @if ($job_posts->isEmpty())
+            @if ($organizations->isEmpty())
                 <h2 style="text-align:center; padding-top:4rem; font-size:1.8rem;">There are no Job postings made yet.
                 </h2>
             @else
             
-                @foreach ($job_posts as $job)
+                @foreach ($organizations as $organization)
                     <fieldset>
                         <div class="card" id="cards">
                             <div style="font-size: 1.6rem;font-weight: 600; color: #894c75;">
-                                <h1>Job Title: {{ $job->job_title }}</h1>
+                                <h1>Job Title: {{ $organization->job_title }}</h1>
                             </div>
                             <div style="font-style: italic">
-                                <h3>Job Type: {{ $job->type }}</h3>
+                                <h3>Job Type: {{ $organization->type }}</h3>
                             </div>
                             <div>
-                                <p>OVERVIEW: <br />{!! $job->overview !!}</p>
+                                <p>OVERVIEW: <br />{!! $organization->overview !!}</p>
                             </div>
-                            <form action="{{ url('jobPost', [$job->id]) }}" method="GET">
+                            <form action="{{ url('jobPost', [$organization->id]) }}" method="GET">
                                 @csrf
-                                <input type="text" value={{ $job->id }} hidden>
+                                <input type="text" value={{ $organization->id }} hidden>
                                 <button type="submit"
                                     style="background-color: #556973;color:aliceblue; border: none; padding: 10px 20px; border-radius: 20px; font-size: 16px; cursor: pointer;">Show
                                     More</button>
@@ -146,7 +146,7 @@
                         </div>
                     </fieldset>
                 @endforeach
-                <p>{{ $job_posts->links() }}</p>
+                <p>{{ $organizations->links() }}</p>
             @endif
 
         </div>
