@@ -44,6 +44,6 @@ class DatabaseSeeder extends Seeder
             'email' => fake()->companyEmail(),
             'userId' => 5
         ]);
-        JobPost::factory(5)->create();
+        JobPost::factory(20)->create();
     }
 }

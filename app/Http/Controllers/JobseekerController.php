@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\SourceModel;
 use App\Models\DestinationModel;
+use App\Models\Recruiters;
 
 class JobseekerController extends Controller
 {
@@ -19,7 +20,24 @@ class JobseekerController extends Controller
         return view('jobseeker.appliedjobs')->with('applied', $data);
     }
 
+    // Show open job posts
+    public function viewJobPost()
+    {
+        $job_posts = JobPost::where('status', 1)->paginate(6);
+        return view('index', compact('job_posts'));
+    }
 
+    // Show a particular job post
+    public function viewSpecificJob($id){
+        $job = JobPost::findorFail($id);
+        $org = Recruiters::findorFail($job->organisation);
+        $similarJobs = JobPost::where('type', $job->type)->where('id', '!=', $id)->limit(5)->get();
+        return view('jobseeker.jobPost')
+            ->with('job', $job)
+            ->with('organisation', $org)
+            ->with('similar_jobs', $similarJobs);
+
+    }
 
     // view profile
     public function viewProfile()

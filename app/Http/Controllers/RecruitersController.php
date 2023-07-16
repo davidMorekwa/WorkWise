@@ -10,6 +10,7 @@ use App\Models\Recruiters;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RecruitersController extends Controller
 {
@@ -90,11 +91,7 @@ class RecruitersController extends Controller
         return redirect()->route('RecruitersHomePage.show');
     }
     // View job post
-    public function viewJobPost()
-    {
-        $organizations = JobPost::where('status', 1)->get();
-        return view('index', compact('organizations'));
-    }
+    
 
     // Show recent job posts
     public function recentJobPosts()
@@ -111,6 +108,7 @@ class RecruitersController extends Controller
         $post = JobPost::find($request->post_id);
         $post->status = 0;
         $post->save();
+        $post->delete();
         return redirect()->route('jobPosts.show');
     }
     // Show reviewResumes page
@@ -119,10 +117,14 @@ class RecruitersController extends Controller
         $jobs = JobPost::where('organisation', $organisation->id)->where('status', 1)->get();
         return view('recruiters.reviewResumes')->with('jobs', $jobs);
     }
+    // Show list of applicants
     function tempReviewResume($jobId){
-        Artisan::call('app:export-data-command',['jobId'=>$jobId]);
+        // Artisan::call('app:export-data-command',['jobId'=>$jobId]);
         $resumes = Application::where('job_id', $jobId)->get();
-        $en = new engine;
-        $en->computeTfIdf($resumes[0]->resume);
+        // $eng = new engine($resumes);
+        $job = JobPost::where('id', $jobId)->first('job_title');
+        // $eng->computeTfIdf($resumes);
+        return view('recruiters.resumeView')->with('resumes', $resumes)->with('job_title', $job);
     }
+    
 }

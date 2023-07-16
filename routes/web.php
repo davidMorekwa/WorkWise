@@ -7,6 +7,7 @@ use App\Http\Controllers\JobseekerController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 
+use Illuminate\Support\Facades\Storage;
 use Phpml\FeatureExtraction\TfIdfTransformer;
 use Phpml\Math\Distance\Cosine;
 
@@ -25,7 +26,8 @@ use Phpml\Math\Distance\Cosine;
 //     return view('index');
 // })->name('jobSeekersHome');
 
-Route::get('/', [RecruitersController::class, 'viewJobPost'])->name('/home');
+Route::get('/', [JobseekerController::class, 'viewJobPost'])->name('/home');
+Route::get('jobPost/{id}', [JobseekerController::class, 'viewSpecificJob']);
 
 Auth::routes([
     'verify' => true
@@ -58,7 +60,10 @@ Route::middleware(['auth', 'role:2', 'verified'])->group(function () {
     Route::post('/closeJobPost', [RecruitersController::class, 'closeJobPost'])->name('JobPost.close');
     // Show review resumes page
     Route::get('/reviewResumes/openJobs', [RecruitersController::class, 'showReviewResumes'])->name('ReviewResumes.show');
+    // Show list of applicants
     Route::get('/reviewResumes/review/{jobId}', [RecruitersController::class, 'tempReviewResume']);
+    //Reject Application
+    Route::post('/reviewResume/reject', [ApplicationController::class, 'rejectApplicant'])->name('reviewResume.Reject');
 });
 
 // JOBSEEKER ROUTES
