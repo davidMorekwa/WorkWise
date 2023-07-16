@@ -4,6 +4,7 @@ use App\Http\Controllers\ApplicationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecruitersController;
 use App\Http\Controllers\JobseekerController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 
 use Illuminate\Support\Facades\Storage;
@@ -75,6 +76,13 @@ Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
     Route::get('/viewprofile', [JobseekerController::class, 'viewProfile'])->name('view_profile.view');
     // apply for job
     Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
+    Route::post('/applications/popup', [ApplicationController::class, 'store'])->name('applications.store');
+    Route::get('/ViewAppliedJobs', [JobseekerController::class, 'viewAppliedJobs'])->name('appliedjobs.show');
 });
 
-Route::get('/ViewAppliedJobs', [JobseekerController::class, 'viewAppliedJobs'])->name('appliedjobs.show');
+// ADMIN ROUTE
+// routes/web.php
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+// Route::get('/admin', [AdminController::class, 'viewUsers'])->name('admin.dashboard');
+// Route::get('/admin', [AdminController::class, 'viewJobPost'])->name('admin.dashboard');
+// Add more admin routes here as needed
