@@ -103,23 +103,12 @@
             </form>
         </div>
 
-        <!-- SORT -->
-        <div class="sort">
-            <div class="sort-list">
-                {{-- <form action="{{ route('filterjobs.index') }}" method="GET">  
-                    <input type="text" id="filters" name="filters">
-                    <button type="submit">Filter</button>
-                </form> --}}
-            </div>
-        </div>
-
         <!-- CARDS -->
         <div class="wrapper" id="wrapper">
             @if ($organizations->isEmpty())
                 <h2 style="text-align:center; padding-top:4rem; font-size:1.8rem;">There are no Job postings made yet.
                 </h2>
             @else
-            
                 @foreach ($organizations as $organization)
                     <fieldset>
                         <div class="card" id="cards">
@@ -136,16 +125,12 @@
                                 @csrf
                                 <input type="text" value={{ $organization->id }} hidden>
                                 <button type="submit"
-                                    style="background-color: #556973;color:aliceblue; border: none; padding: 10px 20px; border-radius: 20px; font-size: 16px; cursor: pointer;">Show
-                                    More</button>
+                                    style="background-color: #556973;color:aliceblue; border: none; padding: 10px 20px; border-radius: 20px; font-size: 16px; cursor: pointer;">
+                                    Show More</button>
                             </form>
                             @guest
                                 <a href="{{ route('login') }}" class="btn-apply">Apply Now</a>
                             @else
-
-                            @endguest
-                        </div>
-
                                 <form action="{{ route('applications.store') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -156,20 +141,19 @@
                                     <input type="file" name="resume" id="resume"
                                         value="{{ auth()->user()->cv }}" required>
                                     <button type="submit" id="executeButton"
-                                        style="background-color: #556973;color:aliceblue; border: none; padding: 10px 20px; border-radius: 20px; font-size: 16px; cursor: pointer;">Apply</button>
+                                        style="background-color: #556973;color:aliceblue; border: none; padding: 10px 20px; border-radius: 20px; font-size: 16px; cursor: pointer;">Apply
+                                        Now</button>
                                 </form>
-
-                            </div>
-                        @endguest
-
+                            @endguest
+                        </div>
                     </fieldset>
                 @endforeach
-                <p>{{ $organizations->links() }}</p>
             @endif
-
         </div>
+        <p>{{ $organizations->links() }}</p>
     </div>
-    </div>
+
+
 
     <!-- MAIN JS -->
     <script src="index.js"></script>
