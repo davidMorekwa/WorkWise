@@ -91,11 +91,7 @@ class RecruitersController extends Controller
         return redirect()->route('RecruitersHomePage.show');
     }
     // View job post
-    public function viewJobPost()
-    {
-        $organizations = JobPost::where('status', 1)->get();
-        return view('index', compact('organizations'));
-    }
+    
 
     // Show recent job posts
     public function recentJobPosts()

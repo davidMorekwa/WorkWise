@@ -14,8 +14,8 @@
         href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <!-- CSS Styles -->
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="initial.css">
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="../initial.css">
 </head>
 
 <body class="antialiased">
@@ -115,39 +115,62 @@
 
         <!-- CARDS -->
         <div class="wrapper" id="wrapper">
-            @if ($job_posts->isEmpty())
-                <h2 style="text-align:center; padding-top:4rem; font-size:1.8rem;">There are no Job postings made yet.
-                </h2>
-            @else
+            <div class="card" id="cards">
+                <div style="font-size: 1.6rem;font-weight: 600; color: #894c75;">
+                    <h1>Job Title: {{ $job->job_title }} <br><span>{{$organisation->organisation_name}}</span></h1>
+                </div>
+                <div style="font-style: italic">
+                    <h3 style="color: gray">Job Type: {{ $job->type }}</h3>
+                </div>
+                <div>
+                    <p>OVERVIEW: <br />{!! $job->overview !!}</p>
+                </div>
+                <div>
+                    <p>Requirements: <br>{!! $job->qualifications !!}</p>
+                </div>
+                <div>
+                    <p>Responsibilities: <br>{!! $job->responsibilities !!}</p>
+                </div>
+                @guest
+                    <a href="{{ route('login') }}" class="btn-apply">Apply Now</a>
+                @else
+                    <form action="{{ route('applications.store') }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="organization_id" value="{{ $job->id }}">
+                                    <input type="text" hidden name="job_id" id="job_id"
+                                        value="{{ $job->id }}" required><br />
+                                    <input type="file" name="resume" id="resume"
+                                        value="{{ auth()->user()->cv }}" required>
+                                    <button type="submit"
+                                        style="background-color: #556973;color:aliceblue; border: none; padding: 10px 20px; border-radius: 20px; font-size: 16px; cursor: pointer;">Apply</button>
+                                        
+                                </form>
+
+                </div>
+            @endguest
             
-                @foreach ($job_posts as $job)
+            {{-- <h3>Similar Jobs</h3>
+            {{-- SIMILAR JOBS SECTION 
+            @foreach ($similar_jobs as $job)
                     <fieldset>
                         <div class="card" id="cards">
                             <div style="font-size: 1.6rem;font-weight: 600; color: #894c75;">
                                 <h1>Job Title: {{ $job->job_title }}</h1>
-                            </div>
-                            <div style="font-style: italic">
-                                <h3>Job Type: {{ $job->type }}</h3>
                             </div>
                             <div>
                                 <p>OVERVIEW: <br />{!! $job->overview !!}</p>
                             </div>
                             <form action="{{ url('jobPost', [$job->id]) }}" method="GET">
                                 @csrf
-                                <input type="text" value={{ $job->id }} hidden>
+                                <input type="text" value={{ $job->id }}>
                                 <button type="submit"
                                     style="background-color: #556973;color:aliceblue; border: none; padding: 10px 20px; border-radius: 20px; font-size: 16px; cursor: pointer;">Show
                                     More</button>
                             </form>
-                            @guest
-                                <a href="{{ route('login') }}" class="btn-apply">Apply Now</a>
-                            @else
-                            @endguest
-                        </div>
                     </fieldset>
-                @endforeach
-                <p>{{ $job_posts->links() }}</p>
-            @endif
+                @endforeach --}}
 
         </div>
     </div>
