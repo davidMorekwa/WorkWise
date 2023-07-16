@@ -30,7 +30,7 @@
         @php
             $count = 1;
         @endphp
-    
+        <span class="alert alert-success mb-3" role="alert" id="successMsg" style="display: none">Updated</span>
         @foreach ($resumes as $resume)
             <div class="resume">
                 <span>{{ $count }}. </span>
@@ -49,13 +49,13 @@
                     </form>
                 </div>
             </div>
-    
+
             @php
                 $count++;
             @endphp
         @endforeach
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -71,9 +71,13 @@
                 $.ajax({
                     type: "POST",
                     url: "{{ url('/reviewResume/reject') }}",
-                    data: { application_id: btnId },
+                    data: {
+                        application_id: btnId
+                    },
                     success: function(response) {
                         location.reload();
+                        $("#successMsg").fadeIn();
+                        $("#successMsg").fadeOut();
                     }
                 });
             });
