@@ -82,7 +82,6 @@ Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
 
 // ADMIN ROUTE
 // routes/web.php
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-// Route::get('/admin', [AdminController::class, 'viewUsers'])->name('admin.dashboard');
-// Route::get('/admin', [AdminController::class, 'viewJobPost'])->name('admin.dashboard');
-// Add more admin routes here as needed
+Route::middleware(['auth', 'role:1', 'verified'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+});

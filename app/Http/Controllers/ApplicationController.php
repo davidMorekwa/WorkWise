@@ -31,22 +31,24 @@ class ApplicationController extends Controller
         $candidate_email = Auth::user()->email;
         $org = Recruiters::where('id', $job->organisation)->first('organisation_name', 'email');
         $this->applicationReceived($candidate_name, $candidate_email, $org->organisation_name, $org->email, $job_title);
-        
-//         return redirect()->back()->with('success', 'Application submitted successfully.');
 
-            // 'userId' => Auth::user()->id,
+        //         return redirect()->back()->with('success', 'Application submitted successfully.');
+
+        // 'userId' => Auth::user()->id,
 //         ]);
         $message = "Function";
         // return redirect()->back()->with('success', 'Application submitted successfully.');
         return view('popup', compact('message'));
-      ]);
+        //   ]);
 
     }
-    public function applicationReceived($candidate_name, $candidate_email, $org_name, $org_email, $job_title){
+    public function applicationReceived($candidate_name, $candidate_email, $org_name, $org_email, $job_title)
+    {
         $email = new applicationReceivedEmail($job_title, $candidate_name, $candidate_email, $org_name, $org_email);
         Mail::send($email);
     }
-    function rejectApplicant(Request $request){
+    function rejectApplicant(Request $request)
+    {
         $application = Application::where('id', $request->application_id)->first();
         $jobId = $application->job_id;
         $jobTitle = JobPost::where('id', $jobId)->first('job_title');

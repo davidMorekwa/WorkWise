@@ -2,6 +2,31 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #556973;
+
+        }
+
+        th {
+            background-color: #556973;
+            color:aliceblue;
+        }
+
+        tr:hover {
+            background-color: #894c75;
+            color:aliceblue;
+        }
+    </style>
     <div class="container">
         <h1>Admin Dashboard</h1>
 
@@ -11,20 +36,30 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                     <th>Email</th>
+                    <th>Email Verified At</th>
+                    <th>Role Id</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
                     <!-- Add more user fields as needed -->
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach($users as $user)
+                @foreach ($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->fname }}</td>
+                        <td>{{ $user->lname }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->email_verified_at }}</td>
+                        <td>{{ $user->role_id }}</td>
+                        <td>{{ $user->created_at }}</td>
+                        <td>{{ $user->updated_at}}</td>
                         <!-- Add more user fields as needed -->
                     </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
         </table>
 
@@ -34,20 +69,28 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
+                    <th>Job Title</th>
+                    <th>Job Type</th>
+                    <th>Position Title</th>
+                    <th>Overview</th>
+                    <th>Responsibilites</th>
+                    <th>Qualifications</th>
                     <!-- Add more job post fields as needed -->
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach($jobPosts as $jobPost)
+                @foreach ($jobposts as $jobPost)
                     <tr>
                         <td>{{ $jobPost->id }}</td>
-                        <td>{{ $jobPost->title }}</td>
-                        <td>{{ $jobPost->description }}</td>
+                        <td>{{ $jobPost->job_title }}</td>
+                        <td>{{ $jobPost->type }}</td>
+                        <td>{{ $jobPost->position_title }}</td>
+                        <td>{{ $jobPost->overview }}</td>
+                        <td>{{ $jobPost->responsibilities }}</td>
+                        <td>{{ $jobPost->qualifications }}</td>
                         <!-- Add more job post fields as needed -->
                     </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
         </table>
     </div>
