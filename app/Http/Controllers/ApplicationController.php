@@ -23,7 +23,7 @@ class ApplicationController extends Controller
             'resume' => $resumePath,
             'job_id' => $request->job_id,
 
-            'user_id' => Auth::user()->id,
+            // 'user_id' => Auth::user()->id,
         ]);
         $job = JobPost::where('id', $request->job_id)->first();
         $job_title = $job->job_title;
@@ -60,5 +60,11 @@ class ApplicationController extends Controller
         $rejectEmail = new rejectionEmail($jobTitle->job_title, $candidate->fname, $candidate->email, $recruiter->organisation_name, $recruiter->email);
         Mail::send($rejectEmail);
         $application->delete();
+    }
+
+    public function viewApplications()
+    {
+        $applications = Application::where('user_id', Auth::user()->id)->get();
+        return view('jobseeker.appliedjobs', compact('applications'));
     }
 }
