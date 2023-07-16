@@ -25,7 +25,8 @@ use Phpml\Math\Distance\Cosine;
 //     return view('index');
 // })->name('jobSeekersHome');
 
-Route::get('/', [RecruitersController::class, 'viewJobPost'])->name('/home');
+Route::get('/', [JobseekerController::class, 'viewJobPost'])->name('/home');
+Route::get('jobPost/{id}', [JobseekerController::class, 'viewSpecificJob']);
 
 Auth::routes([
     'verify' => true
