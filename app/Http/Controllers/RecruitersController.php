@@ -112,6 +112,7 @@ class RecruitersController extends Controller
         $post = JobPost::find($request->post_id);
         $post->status = 0;
         $post->save();
+        $post->delete();
         return redirect()->route('jobPosts.show');
     }
     // Show reviewResumes page
@@ -120,17 +121,14 @@ class RecruitersController extends Controller
         $jobs = JobPost::where('organisation', $organisation->id)->where('status', 1)->get();
         return view('recruiters.reviewResumes')->with('jobs', $jobs);
     }
+    // Show list of applicants
     function tempReviewResume($jobId){
-        Artisan::call('app:export-data-command',['jobId'=>$jobId]);
+        // Artisan::call('app:export-data-command',['jobId'=>$jobId]);
         $resumes = Application::where('job_id', $jobId)->get();
+        // $eng = new engine($resumes);
         $job = JobPost::where('id', $jobId)->first('job_title');
-        // echo $job;
-        // echo $resumes;
+        // $eng->computeTfIdf($resumes);
         return view('recruiters.resumeView')->with('resumes', $resumes)->with('job_title', $job);
     }
-    function downloadResumes($id){
-        $appl = Application::findorFail($id);
-        $resumePath = $appl->resume;
-        // return Storage::download('/Users/dave/WorkWise/WorkWise/storage/app/public/'.$resumePath);
-    }
+    
 }

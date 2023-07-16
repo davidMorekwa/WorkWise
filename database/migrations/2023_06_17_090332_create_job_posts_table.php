@@ -16,13 +16,14 @@ return new class extends Migration
             $table->string('job_title');
             $table->string('type');
             $table->string('position_title');
-            $table->string('overview');
-            $table->string('responsibilities');
-            $table->string('qualifications');
+            $table->string('overview', 3000);
+            $table->string('responsibilities', 3000);
+            $table->string('qualifications', 3000);
             // TODO: Salary
             $table->foreignId('organisation')->constrained('recruiters')->onDelete('cascade');
             $table->boolean('status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
