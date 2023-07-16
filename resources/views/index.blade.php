@@ -137,13 +137,13 @@
                                 <form action="{{ route('applications.store') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
-                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                    <input type="hidden" name="organization_id" value="{{ $organization->id }}">
+                                    {{-- <input type="integer" hidden name="user_id" value="{{ Auth::user()->id }}"> --}}
+                                    <input type="integer" hidden name="organization_id" value="{{ $organization->id }}">
                                     <input type="text" hidden name="job_id" id="job_id"
                                         value="{{ $organization->id }}" required><br />
                                     <input type="file" name="resume" id="resume"
                                         value="{{ auth()->user()->cv }}" required>
-                                    <button type="submit"
+                                    <button type="submit" id="executeButton"
                                         style="background-color: #556973;color:aliceblue; border: none; padding: 10px 20px; border-radius: 20px; font-size: 16px; cursor: pointer;">Apply</button>
                                 </form>
 
@@ -164,6 +164,20 @@
 ></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <!-- Other head elements... -->
+
+    <script>
+        document.getElementById('executeButton').addEventListener('click', function() {
+            // Make an AJAX call to execute the function and display the pop-up
+            fetch('/execute-function')
+                .then(response => response.text())
+                .then(html => {
+                    // Append the returned HTML (pop-up) to the body of the page
+                    document.body.insertAdjacentHTML('beforeend', html);
+                });
+        });
+    </script>
+
 </body>
 
 </html>

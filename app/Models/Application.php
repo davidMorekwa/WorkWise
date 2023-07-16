@@ -9,7 +9,8 @@ class Application extends Model
 {
     protected $fillable = [
         'resume',
-        'job_id'
+        'job_id',
+        // 'user_id',
     ];
     use HasFactory;
     // public function organization()

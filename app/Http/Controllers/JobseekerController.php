@@ -15,16 +15,6 @@ class JobseekerController extends Controller
     // view applied jobs
     public function viewAppliedJobs()
     {
-        $sourceData = SourceModel::find(); // Fetch the data from the source table using the ID
-
-        // Create a new entry in the destination table and associate it with the source data
-        $destinationData = new DestinationModel([
-            'job_title' => $sourceData->job_title,
-            'type' => $sourceData->type,
-            // Include other columns as needed
-        ]);
-        $destinationData->sourceModel()->associate($sourceData); // Associate the source model using the ID
-        $destinationData->save();
         $data = DB::table('applications')->where('userId', Auth::user()->id);
         return view('jobseeker.appliedjobs')->with('applied', $data);
     }
