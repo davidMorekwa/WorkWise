@@ -13,12 +13,16 @@ return new class extends Migration {
         Schema::create('jobseekers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('userId')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('fname');
-            $table->string('lname');
-            $table->string('email')->unique();
-            $table->integer('phone_number');
+            $table->date('date_of_birth');
+            $table->text('self_desription')->nullable();
+            $table->text('education')->nullable();
+            $table->string('field')->nullable();
+            $table->text('experience')->nullable();
+            $table->text('skills')->nullable();
+            $table->text('achievements')->nullable();
+            $table->text('certifications')->nullable();
+            $table->text('hobbies')->nullable();
             $table->string('cv')->nullable();
-            $table->string('self_description')->nullable();
             $table->timestamps();
         });
     }

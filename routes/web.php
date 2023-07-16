@@ -69,9 +69,9 @@ Route::middleware(['auth', 'role:2', 'verified'])->group(function () {
 // JOBSEEKER ROUTES
 Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
     // open the create profile page
-    // Route::get('/myprofile', [JobseekerController::class, 'myprofile'])->name('my_profile.view');
-    // // create jobseeker profile
-    // Route::post('/myprofile', [JobseekerController::class, 'createProfile'])->name('my_profile.create');
+    Route::get('/myprofile', [JobseekerController::class, 'myprofile'])->name('my_profile.view');
+    // create jobseeker profile
+    Route::post('/myprofile', [JobseekerController::class, 'createProfile'])->name('my_profile.create');
     // view profile of the created jobseeker profile
     Route::get('/viewprofile', [JobseekerController::class, 'viewProfile'])->name('view_profile.view');
     // apply for job
