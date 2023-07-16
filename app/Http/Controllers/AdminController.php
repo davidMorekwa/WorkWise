@@ -10,7 +10,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $users = User::all();
+        $jobposts = JobPost::all();
+        return view('admin.dashboard', compact('users') , compact('jobposts'));
     }
 
     // public function viewJobPost()
@@ -19,9 +21,9 @@ class AdminController extends Controller
     //     return view('admin.dashboard', compact('organizations'));
     // }
 
-    // public function viewUsers()
-    // {
-    //     $users = User::where('status', 1)->get();
-    //     return view('admin.dashboard', compact('users'));
-    // }
+    public function viewUsers()
+    {
+        $users = User::where('status', 1)->get();
+        return view('admin.dashboard', compact('users'));
+    }
 }
