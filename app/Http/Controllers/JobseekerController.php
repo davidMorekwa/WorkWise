@@ -54,35 +54,31 @@ class JobseekerController extends Controller
     // Show open job posts
     public function viewJobPost()
     {
-        $data = array();
-        $eng = new engine;
-        $jobs = $eng->computeTfIdf();
-        foreach ($jobs as $job) {
-            $j = JobPost::where('job_title', $job)->first();
-            array_push($data, $j);
+        if (Auth::user() && Auth::user()->role_id == 3) {
+            $data = array();
+            $eng = new engine;
+            $jobs = $eng->computeTfIdf();
+            if ($jobs == 0) {
+            }
+            foreach ($jobs as $job) {
+                $j = JobPost::where('job_title', $job)->first();
+                array_push($data, $j);
+            }
+            $perPage = 6;
+            $page = request()->query('page', 1);
+            $offset = ($page - 1) * $perPage;
+            $items = array_slice($data, $offset, $perPage);
+            $collection = new Collection($items);
+            $organizations = new LengthAwarePaginator(
+                $collection,
+                count($data),
+                $perPage,
+                $page,
+                ['path' => request()->url(), 'query' => request()->query()]
+            );
+        } else {
+            $organizations = JobPost::where('status', 1)->paginate(6);
         }
-        $perPage = 3;
-
-        // Get the current page number (you can retrieve it from the request)
-        $page = request()->query('page', 1);
-
-        // Calculate the offset
-        $offset = ($page - 1) * $perPage;
-
-        // Slice the array based on the offset and per page count
-        $items = array_slice($data, $offset, $perPage);
-
-        // Create a collection to wrap the sliced items
-        $collection = new Collection($items);
-
-        // Create a paginator instance
-        $organizations = new LengthAwarePaginator(
-            $collection,
-            count($data),
-            $perPage,
-            $page,
-            ['path' => request()->url(), 'query' => request()->query()]
-        );
         // $organizations = JobPost::where('status', 1)->paginate(6);
         return view('index', compact('organizations'));
     }

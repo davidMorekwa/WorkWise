@@ -23,7 +23,6 @@ class ApplicationController extends Controller
             'resume' => $resumePath,
             'job_id' => $request->job_id,
             'user_id' => Auth::user()->id,
-
         ]);
 
         $job = JobPost::where('id', $request->job_id)->first();
