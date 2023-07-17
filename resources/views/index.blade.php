@@ -129,13 +129,13 @@
                                     Show More</button>
                             </form>
                             @guest
-                                <a href="{{ route('login') }}" class="btn-apply">Apply Now</a>
+                                {{-- <a href="{{ route('login') }}" class="btn-apply">Apply Now</a> --}}
                             @else
-                                <form action="{{ route('applications.store') }}" method="POST"
-                                    enctype="multipart/form-data">
-                                    @csrf
+                                {{-- <form action="{{ route('applications.store') }}" method="POST"
+                                    enctype="multipart/form-data"> --}}
+                                    {{-- @csrf --}}
                                     {{-- <input type="integer" hidden name="user_id" value="{{ Auth::user()->id }}"> --}}
-                                    <input type="integer" hidden name="organization_id" value="{{ $organization->id }}">
+                                    {{-- <input type="integer" hidden name="organization_id" value="{{ $organization->id }}">
                                     <input type="text" hidden name="job_id" id="job_id"
                                         value="{{ $organization->id }}" required><br />
                                     <input type="file" name="resume" id="resume"
@@ -143,7 +143,7 @@
                                     <button type="submit" id="executeButton"
                                         style="background-color: #556973;color:aliceblue; border: none; padding: 10px 20px; border-radius: 20px; font-size: 16px; cursor: pointer;">Apply
                                         Now</button>
-                                </form>
+                                </form> --}}
                             @endguest
                         </div>
                     </fieldset>
