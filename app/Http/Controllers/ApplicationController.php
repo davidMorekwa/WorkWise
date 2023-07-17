@@ -22,8 +22,7 @@ class ApplicationController extends Controller
         Application::create([
             'resume' => $resumePath,
             'job_id' => $request->job_id,
-
-            // 'user_id' => Auth::user()->id,
+            'user_id' => Auth::user()->id,
         ]);
         $job = JobPost::where('id', $request->job_id)->first();
         $job_title = $job->job_title;

@@ -10,6 +10,7 @@ class Application extends Model
     protected $fillable = [
         'resume',
         'job_id',
+        'user_id'
     ];
     use HasFactory;
     protected $dates=['deleted_at'];
