@@ -84,7 +84,11 @@
                     <th>Overview</th>
                     <th>Responsibilites</th>
                     <th>Qualifications</th>
+
                     <th></th>
+
+                    <a href="/admin/jobPost">Create Job Post</a>
+
                 </tr>
             </thead>
             <tbody>

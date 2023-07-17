@@ -14,10 +14,19 @@ class Application extends Model
 
     ];
     use HasFactory;
-    protected $dates=['deleted_at'];
+    protected $dates = ['deleted_at'];
     // public function organization()
     // {
     //     return $this->belongsTo(Organization::class);
     // }
 
+    // app/Models/AppliedJob.php
+
+    protected $guarded = [];
+
+    public function job()
+    {
+        return $this->belongsTo(JobPost::class, 'job_id');
+    }
+    
 }
