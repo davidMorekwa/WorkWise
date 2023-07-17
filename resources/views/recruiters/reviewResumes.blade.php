@@ -62,5 +62,7 @@
         </form>
     </div>
     @endforeach
+    
 </div>
+{{ $jobs->links('pagination.custom-pagination') }}
 @endsection
