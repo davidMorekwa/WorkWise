@@ -11,11 +11,15 @@ class jobseekers extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'fname',
-        'lname',
-        'email',
-        'phone_number',
-        'self_description',
+        'date_of_birth',
+        'education',
+        'experience',
+        'skills',
+        'achievements',
+        'field',
+        'certifications',
+        'hobbies',
+        'self_desription',
         'cv',
         'userId',
     ];
