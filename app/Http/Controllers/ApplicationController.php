@@ -22,9 +22,10 @@ class ApplicationController extends Controller
         Application::create([
             'resume' => $resumePath,
             'job_id' => $request->job_id,
+            'user_id' => Auth::user()->id,
 
-            // 'user_id' => Auth::user()->id,
         ]);
+
         $job = JobPost::where('id', $request->job_id)->first();
         $job_title = $job->job_title;
         $candidate_name = Auth::user()->fname;
@@ -32,14 +33,7 @@ class ApplicationController extends Controller
         $org = Recruiters::where('id', $job->organisation)->first('organisation_name', 'email');
         $this->applicationReceived($candidate_name, $candidate_email, $org->organisation_name, $org->email, $job_title);
 
-        //         return redirect()->back()->with('success', 'Application submitted successfully.');
-
-        // 'userId' => Auth::user()->id,
-//         ]);
-        $message = "Function";
-        // return redirect()->back()->with('success', 'Application submitted successfully.');
-        return view('popup', compact('message'));
-        //   ]);
+        return redirect()->back()->with('success', 'Application submitted successfully.');
 
     }
     public function applicationReceived($candidate_name, $candidate_email, $org_name, $org_email, $job_title)
@@ -62,9 +56,10 @@ class ApplicationController extends Controller
         $application->delete();
     }
 
-    public function viewApplications()
+    public function viewApplications(Request $request)
     {
         $applications = Application::where('user_id', Auth::user()->id)->get();
-        return view('jobseeker.appliedjobs', compact('applications'));
+        $jobposts = JobPost::where('id', $request->job_id)->get();
+        return view('jobseeker.appliedjobs', compact('applications'), compact('jobposts'));
     }
 }
