@@ -19,8 +19,9 @@ class JobseekerController extends Controller
 
     public function myProfile()
     {
-        return view('jobseeker.viewprofile');
+        return view('jobseeker.createprofile');
     }
+    
     public function createProfile(Request $request)
     {
         $education = "High School: " . $request->sec_edu . ". University: " . $request->uni_edu . ". Masters: " . $request->masters_edu . ".";

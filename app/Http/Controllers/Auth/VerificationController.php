@@ -36,7 +36,7 @@ class VerificationController extends Controller
         } else if( Auth::user()->role_id == 2){ // Recruiter
             return route('company_registration');
         } else if(Auth::user()->role_id == 3){ // Job seeker
-            return route('/home');
+            return route('my_profile.view');
         } else {
             return abort(403, 'Unidentified User');
         }
