@@ -55,10 +55,18 @@ class ApplicationController extends Controller
         $application->delete();
     }
 
-    public function viewApplications(Request $request)
+    // public function viewApplications(Request $request)
+    // {
+    //     $applications = Application::where('user_id', Auth::user()->id)->get();
+    //     $jobposts = JobPost::where('id', $request->job_id)->get();
+    //     return view('jobseeker.appliedjobs', compact('applications'), compact('jobposts'));
+    // }
+
+    public function viewApplications($id)
     {
+        $job = JobPost::findorFail($id)->get();
         $applications = Application::where('user_id', Auth::user()->id)->get();
-        $jobposts = JobPost::where('id', $request->job_id)->get();
-        return view('jobseeker.appliedjobs', compact('applications'), compact('jobposts'));
+        return view('jobseeker.appliedjobs', compact('applications'), compact('job'));
+
     }
 }

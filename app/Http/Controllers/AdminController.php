@@ -8,22 +8,21 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    // View Dashboard
     public function index()
     {
         $users = User::all();
         $jobposts = JobPost::all();
-        return view('admin.dashboard', compact('users') , compact('jobposts'));
+        return view('admin.dashboard', compact('users'), compact('jobposts'));
     }
 
-    // public function viewJobPost()
-    // {
-    //     $organizations = JobPost::where('status', 1)->get();
-    //     return view('admin.dashboard', compact('organizations'));
-    // }
-
-    public function viewUsers()
+    // delete elements
+    public function destroy($id)
     {
-        $users = User::where('status', 1)->get();
-        return view('admin.dashboard', compact('users'));
+        // Find the item in User or JobPost and delete it
+        $item = User::find($id) or JobPost::find($id);
+        $item->delete();
+
+        return redirect()->route('admin.dashboard');
     }
 }
