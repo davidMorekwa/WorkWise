@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-require_once '/Users/dave/WorkWise/WorkWise/vendor/autoload.php';
+// require_once '/Users/dave/WorkWise/WorkWise/vendor/autoload.php';
+
+require_once  'A:\Coding Database\WorkWise\vendor\autoload.php';
 
 use Algenza\Cosinesimilarity\Cosine;
 use App\Models\jobseekers;
