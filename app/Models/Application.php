@@ -11,6 +11,7 @@ class Application extends Model
         'resume',
         'job_id',
         'user_id'
+
     ];
     use HasFactory;
     protected $dates=['deleted_at'];
