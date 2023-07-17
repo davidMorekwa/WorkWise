@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    // View Dashboard
     public function index()
     {
         $users = User::all();
@@ -15,15 +16,5 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('users') , compact('jobposts'));
     }
 
-    // public function viewJobPost()
-    // {
-    //     $organizations = JobPost::where('status', 1)->get();
-    //     return view('admin.dashboard', compact('organizations'));
-    // }
 
-    public function viewUsers()
-    {
-        $users = User::where('status', 1)->get();
-        return view('admin.dashboard', compact('users'));
-    }
 }
