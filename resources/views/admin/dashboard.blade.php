@@ -62,7 +62,7 @@
                             <form method="post" action="{{ route('row.destroy', ['id' => $user->id]) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit"
+                                <button type="submit" style="padding:5px; background-color:red; color:aliceblue; text-transform:uppercase;"
                                     onclick="return confirm('Are you sure you want to delete this User?')">Delete</button>
                             </form>
                         </td>
@@ -73,7 +73,7 @@
         </table>
 
         <!-- Job Posts Table -->
-        <h2>Job Posts</h2>
+        <h2 style="text-align: center; padding:10px;">Job Posts</h2>
         <table>
             <thead>
                 <tr>
@@ -84,11 +84,7 @@
                     <th>Overview</th>
                     <th>Responsibilites</th>
                     <th>Qualifications</th>
-
                     <th></th>
-
-                    <a href="/admin/jobPost">Create Job Post</a>
-
                 </tr>
             </thead>
             <tbody>
@@ -105,7 +101,7 @@
                             <form method="post" action="{{ route('row.destroy', ['id' => $user->id]) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit"
+                                <button type="submit" style="padding:5px; background-color:red; color:aliceblue; text-transform:uppercase;"
                                     onclick="return confirm('Are you sure you want to delete this Job Post?')">Delete</button>
                             </form>
                         </td>

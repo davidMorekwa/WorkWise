@@ -143,7 +143,7 @@
                                         value="{{ $job->id }}" required><br />
                                     <input type="file" name="resume" id="resume"
                                         value="{{ auth()->user()->cv }}" required>
-                                    <button type="submit"
+                                    <button type="submit" onclick="return alert('Application sent successully?')"
                                         style="background-color: #556973;color:aliceblue; border: none; padding: 10px 20px; border-radius: 20px; font-size: 16px; cursor: pointer;">Apply</button>
                                         
                                 </form>
