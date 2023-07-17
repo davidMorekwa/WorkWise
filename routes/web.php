@@ -78,6 +78,8 @@ Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
     Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
     Route::post('/applications/popup', [ApplicationController::class, 'store'])->name('applications.store');
     Route::get('/ViewAppliedJobs', [ApplicationController::class, 'viewApplications'])->name('appliedjobs.show');
+    //remove application
+    Route::delete('/ViewAppliedJobs/remove{id}', [ApplicationController::class, 'destroy'])->name('applied.destroy');
 });
 
 

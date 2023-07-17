@@ -80,7 +80,7 @@
                     <th>Overview</th>
                     <th>Responsibilites</th>
                     <th>Qualifications</th>
-                    <a href="/admin/jobPost" >Create Job Post</a>
+                    <a href="/admin/jobPost">Create Job Post</a>
                 </tr>
             </thead>
             <tbody>
