@@ -28,9 +28,9 @@ class engine
         $profile = jobseekers::where('userId', Auth::user()->id)->first();
         $profileText = $profile->self_desription . "\n" . $profile->education . "\n" . $profile->experience . "\n" . $profile->skills . "\n" . $profile->achievements . "\n" . $profile->certifications . "\n" . $profile->hobbies . "\n";
         $vectorizer = new Vectorizer();
+        // Add job posts to corpus
         Artisan::call('app:export-data-command');
         $files = Storage::files('public/job_posts');
-        // echo $files;
         foreach ($files as $file) {
             $vectorizer->addFile('/Users/dave/WorkWise/WorkWise/storage/app/' . $file);
         }
@@ -42,6 +42,8 @@ class engine
                 $corpus[$entry->term] = $entry->idf;
             }
         }
+
+        // vectorize user profile info
         $vectorizer2 = new Vectorizer();
         $vectorizer2->addText($profileText);
         $profile_vector = array();
@@ -58,7 +60,7 @@ class engine
                 $profile_vector[$term] = $tfidf;
             }
         }
-
+        // vectorize the files/jobposts
         $file_vector = array();
         $recommended = array();
         foreach ($files as $file) {
@@ -76,12 +78,13 @@ class engine
                     $profile_vector[$term] = $tfidf;
                 }
             }
+
+            // compute cosine similarity
             $similarity = Cosine::similarity($profile_vector, $file_vector);
             if($similarity > 0.5){
                 // echo "Files: ".$file.". Score: ".$similarity."<br>";
                 $tempFile = new File('/Users/dave/WorkWise/WorkWise/storage/app/'.$file);
                 $fileNameWithoutExtension = pathinfo($tempFile->getFilename(), PATHINFO_FILENAME);
-                echo $fileNameWithoutExtension;
                 array_push($recommended, $fileNameWithoutExtension);
             }
         }

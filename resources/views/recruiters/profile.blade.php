@@ -152,14 +152,6 @@
                     </span>
                 </div>
                 <hr>
-                <nav id="org-profile-nav">
-                    <ul>
-                        <li>Home</li>
-                        <li>About</li>
-                        <li>Jobs</li>
-                        <li>People</li>
-                    </ul>
-                </nav>
             </div>
         </div>
         <div>
