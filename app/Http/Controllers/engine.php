@@ -32,7 +32,7 @@ class engine
         Artisan::call('app:export-data-command');
         $files = Storage::files('public/job_posts');
         foreach ($files as $file) {
-            $vectorizer->addFile('/Users/dave/WorkWise/WorkWise/storage/app/' . $file);
+            $vectorizer->addFile('A:/Coding Database/WorkWise/storage/app/' . $file);
         }
         $vectorizer->addText($profileText);
         $corpus = array();
@@ -65,7 +65,7 @@ class engine
         $recommended = array();
         foreach ($files as $file) {
             $vectorizer3 = new Vectorizer();
-            $vectorizer3->addFile('/Users/dave/WorkWise/WorkWise/storage/app/' . $file);
+            $vectorizer3->addFile('A:/Coding Database/WorkWise/storage/app/' . $file);
             foreach ($vectorizer3->compute() as $document => $entries) {
                 foreach ($entries as $entry) {
                     // echo $entry->term . " => " . $entry->tf . "<br>";
@@ -83,7 +83,7 @@ class engine
             $similarity = Cosine::similarity($profile_vector, $file_vector);
             if($similarity > 0.5){
                 // echo "Files: ".$file.". Score: ".$similarity."<br>";
-                $tempFile = new File('/Users/dave/WorkWise/WorkWise/storage/app/'.$file);
+                $tempFile = new File('A:/Coding Database/WorkWise/storage/app/'.$file);
                 $fileNameWithoutExtension = pathinfo($tempFile->getFilename(), PATHINFO_FILENAME);
                 array_push($recommended, $fileNameWithoutExtension);
             }

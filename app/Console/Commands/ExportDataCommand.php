@@ -37,7 +37,7 @@ class ExportDataCommand extends Command
         $fileContents = '';
         foreach ($jobs as $data) {
             $fileContents = $data->job_title . "\n" . $data->position_title . "\n" . $data->type . "\n" . $data->overview . "\n" . $data->responsibilities . "\n" . $data->qualifications . "\n";
-            $filePath = '/Users/dave/WorkWise/WorkWise/storage/app/public/job_posts/'.$data->job_title.'.md'; // Define the path to your desired output file
+            $filePath = 'A:/Coding Database/WorkWise/storage/app/public/job_posts/' . $data->job_title . '.md'; // Define the path to your desired output file
             // Save the file
             File::put($filePath, $fileContents);
         }

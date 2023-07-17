@@ -7,15 +7,15 @@
                 <div class="card">
                     <div class="card-body" style="text-align: center">
                         <h3>Create Your Profile</h3>
-                        <form method="post" action="{{ route('my_profile.create') }}">
+                        <form method="post" action="{{route('my_profile.create')}}">
                             @csrf
                             <div class="row mb-3">
                                 <label for="self-description"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Date of Birth') }}</label>
 
                                 <div class="col-md-6">
-                                    {{-- <input type="date" name="dob"> --}}
-                                    <p>{{ $profile_data->date_of_birth }}</p>
+                                    <input type="date" name="dob">
+
                                 </div>
                             </div>
 
@@ -25,8 +25,8 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Describe yourself') }}</label>
 
                                 <div class="col-md-6">
-                                    {{-- <textarea id="self-description" rows="3" cols="50" name="self_description"></textarea> --}}
-                                    <p>{{ $profile_data->self_desription }}</p>
+                                    <textarea id="self-description" rows="3" cols="50" name="self_description"></textarea>
+
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -34,14 +34,9 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Education') }}</label>
 
                                 <div class="col-md-6">
-                                    {{-- <input type="text" name="sec_edu" placeholder="Name of Secondary/High school"><br> --}}
-
-                                    {{-- <input type="text" name="uni_edu" placeholder="Name of university"> <br> --}}
-                                    <p>{{ $profile_data->education}}</p>
-                                    {{-- <input type="text" name="masters_edu" placeholder="Masters University"> --}}
-
-
-
+                                    <input type="text" name="sec_edu" placeholder="Name of Secondary/High school"><br>
+                                    <input type="text" name="uni_edu" placeholder="Name of university"> <br>
+                                    <input type="text" name="masters_edu" placeholder="Masters University">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -50,7 +45,7 @@
 
                                 <div class="col-md-6">
                                     <!-- Industries -->
-                                    {{-- <select class="form-select" name="industry" id="industry">
+                                    <select class="form-select" name="industry" id="industry">
                                         <option value="Accounting">Accounting</option>
                                         <option value="Airlines/Aviation">Airlines/Aviation</option>
                                         <option value="Alternative Dispute Resolution">Alternative Dispute Resolution
@@ -207,10 +202,55 @@
                                         <option value="Wine/Spirits">Wine/Spirits</option>
                                         <option value="Wireless">Wireless</option>
                                         <option value="Writing/Editing">Writing/Editing</option>
-                                    </select> --}}
-                                    <p>{{$profile_data->field }}</p>
+                                    </select>
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <label for="self-description"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Work Experience') }}</label>
+
+                                <div class="col-md-6">
+                                    <textarea id="work_experience" name="work_experience" rows="4" cols="50"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="self-description"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Skills') }}</label>
+
+                                <div class="col-md-6">
+                                    <textarea id="skills" name="skills" rows="4" cols="50"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="self-description"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Achievements and Awards') }}</label>
+
+                                <div class="col-md-6">
+                                    <textarea id="Achievements" name="Achievements" rows="4" cols="50"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="self-description"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Certifications and Training') }}</label>
+
+                                <div class="col-md-6">
+                                    <textarea id="Certifications" name="Certifications" rows="4" cols="50"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="self-description"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Interests and Hobbies') }}</label>
+
+                                <div class="col-md-6">
+                                    <textarea id="interests" name="interests" rows="4" cols="50"></textarea>
+
+                                </div>
+                            </div>
+                            
 
                             {{-- CV --}}
                             <div class="row mb-3">
@@ -218,7 +258,7 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Enter a file of your CV') }}</label>
 
                                 <div class="col-md-6">
-                                    {{-- <input id="cv" type="file"
+                                    <input id="cv" type="file"
                                         class="form-control @error('file') is-invalid @enderror" name="cv" required
                                         autocomplete="cv" readonly>
 
@@ -226,11 +266,10 @@
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror --}}
-                                    <p>{{$profile_data->cv }}</p>
+                                    @enderror
                                 </div>
                             </div>
-                            {{-- <button type="submit">Submit</button> --}}
+                            <button type="submit">Submit</button>
                         </form>
                     </div>
                 </div>
