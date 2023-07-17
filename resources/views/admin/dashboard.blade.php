@@ -19,12 +19,12 @@
 
         th {
             background-color: #556973;
-            color:aliceblue;
+            color: aliceblue;
         }
 
         tr:hover {
             background-color: #894c75;
-            color:aliceblue;
+            color: aliceblue;
         }
     </style>
     <div class="container">
@@ -56,8 +56,13 @@
                         <td>{{ $user->email_verified_at }}</td>
                         <td>{{ $user->role_id }}</td>
                         <td>{{ $user->created_at }}</td>
-                        <td>{{ $user->updated_at}}</td>
-                        <!-- Add more user fields as needed -->
+                        <td>{{ $user->updated_at }}</td>
+                        <form method="post" action="{{ route('row.destroy', ['id' => $user->id]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                onclick="return confirm('Are you sure you want to delete this User?')">Delete</button>
+                        </form>
                     </tr>
                 @endforeach
             </tbody>
@@ -75,7 +80,7 @@
                     <th>Overview</th>
                     <th>Responsibilites</th>
                     <th>Qualifications</th>
-                    <!-- Add more job post fields as needed -->
+                    <a href="/admin/jobPost" >Create Job Post</a>
                 </tr>
             </thead>
             <tbody>
@@ -88,7 +93,12 @@
                         <td>{{ $jobPost->overview }}</td>
                         <td>{{ $jobPost->responsibilities }}</td>
                         <td>{{ $jobPost->qualifications }}</td>
-                        <!-- Add more job post fields as needed -->
+                        <form method="post" action="{{ route('row.destroy', ['id' => $user->id]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                onclick="return confirm('Are you sure you want to delete this Job Post?')">Delete</button>
+                        </form>
                     </tr>
                 @endforeach
             </tbody>

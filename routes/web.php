@@ -86,5 +86,10 @@ Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
 Route::middleware(['auth', 'role:1', 'verified'])->group(function () {
     // admin dashboard
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-
+    // delete post/user
+    Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('row.destroy');
+    // create post
+    Route::post('/createJobPost', [RecruitersController::class, 'createAJobPost'])->name('JobPost.create');
+    // Show Job Post Form
+    Route::get('/admin/jobPost', [RecruitersController::class, 'postAJob'])->name('JobPostForm.show');
 });

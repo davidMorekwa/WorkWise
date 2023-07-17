@@ -13,8 +13,16 @@ class AdminController extends Controller
     {
         $users = User::all();
         $jobposts = JobPost::all();
-        return view('admin.dashboard', compact('users') , compact('jobposts'));
+        return view('admin.dashboard', compact('users'), compact('jobposts'));
     }
 
+    // delete elements
+    public function destroy($id)
+    {
+        // Find the item in User or JobPost and delete it
+        $item = User::find($id) or JobPost::find($id);
+        $item->delete();
 
+        return redirect()->route('admin.dashboard');
+    }
 }

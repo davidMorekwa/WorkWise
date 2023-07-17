@@ -18,32 +18,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        // DB::table('user_roles')->insert([
-        //     'Roles' => "Admin",
-        // ]);
-        // DB::table('user_roles')->insert([
-        //     'Roles' => "Recruiter",
-        // ]);
-        // DB::table('user_roles')->insert([
-        //     'Roles' => "Job Seeker",
-        // ]);
-        // User::factory(5)->create();
-        // Recruiters::factory()->create([
-        //     'organisation_name' => 'WorkWise',
-        //     'location' => fake()->country(),
-        //     'about' => fake()->paragraph(1),
-        //     'industry' => 'IT',
-        //     'website' => 'http:/localhost:8000',
-        //     'email' => fake()->companyEmail(),
-        //     'userId' => 5
-        // ]);
+        DB::table('user_roles')->insert([
+            'Roles' => "Admin",
+        ]);
+        DB::table('user_roles')->insert([
+            'Roles' => "Recruiter",
+        ]);
+        DB::table('user_roles')->insert([
+            'Roles' => "Job Seeker",
+        ]);
+        User::factory(5)->create();
+        Recruiters::factory()->create([
+            'organisation_name' => 'WorkWise',
+            'location' => fake()->country(),
+            'about' => fake()->paragraph(1),
+            'industry' => 'IT',
+            'website' => 'http:/localhost:8000',
+            'email' => fake()->companyEmail(),
+            'userId' => 5
+        ]);
         JobPost::factory(20)->create();
     }
 }
