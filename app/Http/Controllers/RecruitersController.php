@@ -85,7 +85,7 @@ class RecruitersController extends Controller
             'responsibilities' => $request->txt_responsibilities,
             'type' => $request->job_type,//internship/ fulltime
             'qualifications' => $request->txt_qualifications,
-            'status' => false,
+            'status' => true,
             'organisation' => $organisation->id
         ]);
         return redirect()->route('RecruitersHomePage.show');
@@ -114,7 +114,7 @@ class RecruitersController extends Controller
     // Show reviewResumes page
     public function showReviewResumes(){
         $organisation = Recruiters::where('userId', Auth::user()->id)->first();
-        $jobs = JobPost::where('organisation', $organisation->id)->where('status', 1)->get();
+        $jobs = JobPost::where('organisation', $organisation->id)->where('status', 1)->paginate(8);
         return view('recruiters.reviewResumes')->with('jobs', $jobs);
     }
     // Show list of applicants
