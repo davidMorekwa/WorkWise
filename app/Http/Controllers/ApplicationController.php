@@ -62,11 +62,20 @@ class ApplicationController extends Controller
     //     return view('jobseeker.appliedjobs', compact('applications'), compact('jobposts'));
     // }
 
-    public function viewApplications($id)
+    public function viewApplications()
     {
-        $job = JobPost::findorFail($id)->get();
+        // $job = JobPost::findorFail($id)->get();
         $applications = Application::where('user_id', Auth::user()->id)->get();
-        return view('jobseeker.appliedjobs', compact('applications'), compact('job'));
+        return view('jobseeker.appliedjobs', compact('applications'), compact('applications'));
 
+    }
+
+    public function destroy($id)
+    {
+        // Find the item in User or JobPost and delete it
+        $item = Application::find($id);
+        $item->delete();
+
+        return redirect()->route('appliedjobs.show');
     }
 }
