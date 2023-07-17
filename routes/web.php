@@ -77,7 +77,7 @@ Route::middleware(['auth', 'role:3', 'verified'])->group(function () {
     // apply for job
     Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
     Route::post('/applications/popup', [ApplicationController::class, 'store'])->name('applications.store');
-    Route::get('/ViewAppliedJobs{id}', [ApplicationController::class, 'viewApplications'])->name('appliedjobs.show');
+    Route::get('/ViewAppliedJobs', [ApplicationController::class, 'viewApplications'])->name('appliedjobs.show');
 });
 
 

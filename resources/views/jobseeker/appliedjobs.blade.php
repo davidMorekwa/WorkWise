@@ -2,7 +2,7 @@
 
 @section('content')
     @if ($applications->isEmpty())
-        <h2 style="text-align:center; padding-top:4rem; font-size:1.8rem;">There are no Job postings made yet.
+        <h2 style="text-align:center; padding-top:4rem; font-size:1.8rem;">There are no applications made.
         </h2>
     @else
         @foreach ($applications as $applied)
