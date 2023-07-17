@@ -43,6 +43,7 @@
                     <th>Role Id</th>
                     <th>Created At</th>
                     <th>Updated At</th>
+                    <th></th>
                     <!-- Add more user fields as needed -->
                 </tr>
             </thead>
@@ -57,12 +58,15 @@
                         <td>{{ $user->role_id }}</td>
                         <td>{{ $user->created_at }}</td>
                         <td>{{ $user->updated_at }}</td>
-                        <form method="post" action="{{ route('row.destroy', ['id' => $user->id]) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                onclick="return confirm('Are you sure you want to delete this User?')">Delete</button>
-                        </form>
+                        <td>
+                            <form method="post" action="{{ route('row.destroy', ['id' => $user->id]) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    onclick="return confirm('Are you sure you want to delete this User?')">Delete</button>
+                            </form>
+                        </td>
+                        
                     </tr>
                 @endforeach
             </tbody>
@@ -80,7 +84,7 @@
                     <th>Overview</th>
                     <th>Responsibilites</th>
                     <th>Qualifications</th>
-                    <a href="/admin/jobPost" >Create Job Post</a>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -93,12 +97,15 @@
                         <td>{{ $jobPost->overview }}</td>
                         <td>{{ $jobPost->responsibilities }}</td>
                         <td>{{ $jobPost->qualifications }}</td>
-                        <form method="post" action="{{ route('row.destroy', ['id' => $user->id]) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                onclick="return confirm('Are you sure you want to delete this Job Post?')">Delete</button>
-                        </form>
+                        <td>
+                            <form method="post" action="{{ route('row.destroy', ['id' => $user->id]) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    onclick="return confirm('Are you sure you want to delete this Job Post?')">Delete</button>
+                            </form>
+                        </td>
+                        
                     </tr>
                 @endforeach
             </tbody>
