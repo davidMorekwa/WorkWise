@@ -5,14 +5,45 @@ namespace App\Http\Controllers;
 use App\Models\JobPost;
 use App\Models\jobseekers;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\SourceModel;
 use App\Models\DestinationModel;
 use App\Models\Recruiters;
+use Symfony\Component\VarDumper\VarDumper;
 
 class JobseekerController extends Controller
 {
+
+    public function myProfile()
+    {
+        return view('jobseeker.viewprofile');
+    }
+    public function createProfile(Request $request)
+    {
+        $education = "High School: " . $request->sec_edu . ". University: " . $request->uni_edu . ". Masters: " . $request->masters_edu . ".";
+        // dd($request);
+        // $resumePath = $request->file('cv')->store('resumes', 'public');
+        // echo $resumePath;
+        // dd($request);
+        jobseekers::create([
+            'date_of_birth' => $request->dob,
+            'education' => $education,
+            'skills' => $request->skills,
+            'achievements' => $request->achievements,
+            'certifications' => $request->Certification,
+            'hobbies' => $request->interests,
+            'self_desription' => $request->self_description,
+            'experience' => $request->work_experience,
+            'userId' => Auth::user()->id,
+            'field' => $request->industry,
+        ]);
+        return redirect()->route('/home');
+    }
+
+
     // view applied jobs
     public function viewAppliedJobs()
     {
@@ -23,12 +54,42 @@ class JobseekerController extends Controller
     // Show open job posts
     public function viewJobPost()
     {
-        $organizations = JobPost::where('status', 1)->paginate(6);
+        $data = array();
+        $eng = new engine;
+        $jobs = $eng->computeTfIdf();
+        foreach ($jobs as $job) {
+            $j = JobPost::where('job_title', $job)->first();
+            array_push($data, $j);
+        }
+        $perPage = 3;
+
+        // Get the current page number (you can retrieve it from the request)
+        $page = request()->query('page', 1);
+
+        // Calculate the offset
+        $offset = ($page - 1) * $perPage;
+
+        // Slice the array based on the offset and per page count
+        $items = array_slice($data, $offset, $perPage);
+
+        // Create a collection to wrap the sliced items
+        $collection = new Collection($items);
+
+        // Create a paginator instance
+        $organizations = new LengthAwarePaginator(
+            $collection,
+            count($data),
+            $perPage,
+            $page,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
+        // $organizations = JobPost::where('status', 1)->paginate(6);
         return view('index', compact('organizations'));
     }
 
     // Show a particular job post
-    public function viewSpecificJob($id){
+    public function viewSpecificJob($id)
+    {
         $job = JobPost::findorFail($id);
         $org = Recruiters::findorFail($job->organisation);
         $similarJobs = JobPost::where('type', $job->type)->where('id', '!=', $id)->limit(5)->get();
@@ -36,7 +97,6 @@ class JobseekerController extends Controller
             ->with('job', $job)
             ->with('organisation', $org)
             ->with('similar_jobs', $similarJobs);
-
     }
 
     // view profile
@@ -45,7 +105,6 @@ class JobseekerController extends Controller
         $data = DB::table('jobseekers')->where('userId', Auth::user()->id)->first();
         // dd($data);
         return view('jobseeker.viewprofile')->with('profile_data', $data);
-
     }
 
 
