@@ -36,7 +36,9 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit"
-                                onclick="return confirm('Are you sure you want to delete this application?')">Delete</button>
+                                style="border-radius: 10px;  background-color:#556973; color: aliceblue; border:none; padding:10px; font-weight:500;"
+                                onclick="return confirm('Are you sure you want to delete this application?')">Remove
+                                Application</button>
                         </form>
                     </div>
                 </div>
