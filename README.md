@@ -89,14 +89,12 @@ php artisan serve
 
 Contributions to the Workwise Job Board project are always welcome. If you find a bug or have suggestions for new features, please open an issue or submit a pull request.
 
-Before contributing, please make sure to read and adhere to the [code of conduct](CODE_OF_CONDUCT.md).
-
 ## License
 
 The Workwise Job Board project is open-source software licensed under the [MIT license](LICENSE).
 
 ## Contact
 
-If you have any questions or inquiries, feel free to contact the project maintainer at [mwandajosiah@gmail.com && d.nyamongo11@gmail.com](mailto:your-email@example.com).
+If you have any questions or inquiries, feel free to contact the project maintainer at [mwandajosiah@gmail.com & d.nyamongo11@gmail.com](mailto:your-email@example.com).
 
 Thank you for using Workwise!
